@@ -1,81 +1,7 @@
 .questionnaireContainer {
   min-height: 100vh;
-  background-color: #f8f9fa;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-.questionnaireHeader {
   background-color: white;
-  border-radius: 12px;
-  margin: 20px auto;
-  max-width: 600px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.questionnaireHeaderContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 24px;
-}
-
-.questionnaireLogo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.questionnaireLogoIcon {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  border-radius: 50%;
-  position: relative;
-}
-
-.questionnaireLogoIcon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.questionnaireLogoText {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f2937;
-}
-
-.questionnaireNav {
-  display: flex;
-  gap: 32px;
-}
-
-.questionnaireNavLink {
-  text-decoration: none;
-  color: #6b7280;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.questionnaireNavLink:hover {
-  color: #3b82f6;
-}
-
-.questionnaireProfileAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.questionnaireAvatarImage {
-  border-radius: 50%;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .questionnaireMain {
@@ -83,7 +9,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 20px;
-  min-height: calc(100vh - 140px);
+  min-height: 100vh;
 }
 
 .questionnaireQuestionContainer {
@@ -93,44 +19,52 @@
 }
 
 .questionnaireQuestionTitle {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 600;
   color: #1f2937;
-  margin-bottom: 12px;
-  line-height: 1.2;
+  margin-bottom: 8px;
+  line-height: 1.3;
 }
 
 .questionnaireQuestionSubtitle {
-  font-size: 16px;
+  font-size: 14px;
   color: #6b7280;
-  margin-bottom: 40px;
-  line-height: 1.5;
+  margin-bottom: 32px;
+  line-height: 1.4;
 }
 
 .questionnaireInputSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .questionnaireInputContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
   max-width: 500px;
 }
 
-.questionnaireInput {
+.questionnaireInputWithButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
   width: 100%;
-  padding: 16px 20px;
+}
+
+.questionnaireInput {
+  flex: 1;
+  padding: 14px 16px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
   background: white;
   color: #1f2937;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-family: "Inter", sans-serif;
 }
 
 .questionnaireInput::placeholder {
@@ -145,20 +79,28 @@
 
 .questionnaireButtonGroup {
   display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.questionnaireRadioButtonGroup {
+  display: flex;
   gap: 12px;
   justify-content: center;
+  margin-bottom: 16px;
 }
 
 .questionnaireSubmitButton {
   background: #3b82f6;
   border: none;
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-family: "Inter", sans-serif;
 }
 
 .questionnaireSubmitButton:hover {
@@ -169,12 +111,14 @@
   background: transparent;
   border: 1px solid #3b82f6;
   color: #3b82f6;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  font-family: "Inter", sans-serif;
+  white-space: nowrap;
 }
 
 .questionnaireIDontKnowButton:hover {
@@ -186,11 +130,14 @@
   background: transparent;
   border: none;
   color: #6b7280;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   text-decoration: underline;
   transition: color 0.2s;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .questionnaireSkipButton:hover {
@@ -220,11 +167,11 @@
 .questionnaireRadioCard {
   background: white;
   border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 32px 48px;
+  border-radius: 8px;
+  padding: 24px 36px;
   text-align: center;
   transition: all 0.2s;
-  min-width: 120px;
+  min-width: 100px;
 }
 
 .questionnaireRadioInput:checked + .questionnaireRadioCard {
@@ -237,8 +184,8 @@
 }
 
 .questionnaireRadioIcon {
-  font-size: 32px;
-  margin-bottom: 12px;
+  font-size: 28px;
+  margin-bottom: 8px;
   color: #6b7280;
 }
 
@@ -247,46 +194,55 @@
 }
 
 .questionnaireRadioText {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: #1f2937;
+  font-family: "Inter", sans-serif;
 }
 
 .questionnaireSelectContainer {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   width: 100%;
   max-width: 500px;
 }
 
+.questionnaireSelectWithButtons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
 .questionnaireSelectWrapper {
   position: relative;
-  width: 100%;
+  flex: 1;
 }
 
 .questionnaireLocationIcon {
   position: absolute;
-  left: 16px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 16px;
+  font-size: 14px;
   color: #6b7280;
   z-index: 1;
 }
 
 .questionnaireSelect {
   width: 100%;
-  padding: 16px 20px;
-  padding-left: 48px;
+  padding: 14px 16px;
+  padding-left: 36px;
   border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 6px;
+  font-size: 14px;
   background: white;
   color: #1f2937;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   appearance: none;
+  font-family: "Inter", sans-serif;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 12px center;
   background-repeat: no-repeat;
@@ -299,77 +255,81 @@
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
-.questionnaireLoadingContainer,
-.questionnaireVerificationContainer {
+.questionnaireProcessingContainer {
   text-align: center;
   max-width: 600px;
   width: 100%;
 }
 
-.questionnaireLoadingIcon,
-.questionnaireVerificationIcon {
+.questionnaireProcessingIcon {
   position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 40px;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 32px;
 }
 
-.questionnaireLoadingSvg,
-.questionnaireVerificationSvg {
+.questionnaireProcessingSvg {
   width: 100%;
   height: 100%;
 }
 
-.questionnaireLoadingCircle,
-.questionnaireVerificationCircle {
-  animation: questionnaireRotate 2s linear infinite;
+.questionnaireProcessingCircle {
+  transition: stroke-dashoffset 0.1s ease-out;
 }
 
-@keyframes questionnaireRotate {
-  from {
-    transform: rotate(-90deg);
-  }
-  to {
-    transform: rotate(270deg);
-  }
+.questionnaireProcessingTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  font-family: "Inter", sans-serif;
 }
 
-.questionnaireLoadingDocIcon,
-.questionnaireVerificationUserIcon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.questionnaireProcessingSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
+}
+
+.questionnaireResultsContainer {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.questionnaireResultsTitle {
   font-size: 32px;
-}
-
-.questionnaireLoadingTitle,
-.questionnaireVerificationTitle {
-  font-size: 32px;
-  font-weight: 700;
+  font-weight: 600;
   color: #1f2937;
   margin-bottom: 16px;
   line-height: 1.2;
+  font-family: "Inter", sans-serif;
 }
 
-.questionnaireLoadingSubtitle,
-.questionnaireVerificationSubtitle {
+.questionnaireResultsSubtitle {
   font-size: 16px;
   color: #6b7280;
-  line-height: 1.6;
+  line-height: 1.5;
+  font-family: "Inter", sans-serif;
 }
 
 @media (max-width: 768px) {
-  .questionnaireHeaderContent {
-    padding: 12px 16px;
-  }
-
-  .questionnaireNav {
-    gap: 20px;
-  }
-
   .questionnaireQuestionTitle {
-    font-size: 24px;
+    font-size: 20px;
+  }
+
+  .questionnaireInputWithButtons,
+  .questionnaireSelectWithButtons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .questionnaireButtonGroup,
+  .questionnaireRadioButtonGroup {
+    width: 100%;
+    justify-content: center;
   }
 
   .questionnaireRadioGroup {
@@ -378,16 +338,15 @@
   }
 
   .questionnaireRadioCard {
-    min-width: 200px;
-  }
-
-  .questionnaireButtonGroup {
-    flex-direction: column;
-    align-items: center;
+    min-width: 180px;
   }
 
   .questionnaireSubmitButton,
   .questionnaireIDontKnowButton {
-    width: 200px;
+    min-width: 120px;
+  }
+
+  .questionnaireProcessingTitle {
+    font-size: 22px;
   }
 }

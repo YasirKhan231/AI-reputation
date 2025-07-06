@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import styles from "./questions.module.css";
 
 interface QuestionnaireData {
@@ -88,6 +87,24 @@ const questions = [
   },
 ];
 
+const processingSteps = [
+  {
+    title: 'Looking Up Public Profiles for "Robinson Crusoe"',
+    subtitle:
+      "We're scanning the open web to find real people behind the name —\nwith a 99.7% match accuracy based on usernames, bios, and public\nphotos.",
+  },
+  {
+    title: "Verifying Identity Match",
+    subtitle:
+      "With a 99.7% identity match accuracy, we make sure you're viewing the\nright profile — not just a lookalike.",
+  },
+  {
+    title: "Understanding Their Online Presence",
+    subtitle:
+      "We connect usernames, bios, photos, and public posts across platforms\nfor a complete view.",
+  },
+];
+
 export default function QuestionnairePage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [formData, setFormData] = useState<QuestionnaireData>({
@@ -100,8 +117,79 @@ export default function QuestionnairePage() {
     age: "",
     location: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
-  const [showVerification, setShowVerification] = useState(false);
+  const [showProcessing, setShowProcessing] = useState(false);
+  const [processingStep, setProcessingStep] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+
+  useEffect(() => {
+    if (showProcessing) {
+      setProgress(0);
+      const duration = 5000; // 5 seconds per step
+      const interval = 50; // Update every 50ms
+      const increment = 100 / (duration / interval);
+
+      const progressInterval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(progressInterval);
+            return 100;
+          }
+          return prev + increment;
+        });
+      }, interval);
+
+      return () => clearInterval(progressInterval);
+    }
+  }, [showProcessing, processingStep]);
+
+  const startProcessing = () => {
+    console.log("Final form data:", formData);
+    setShowProcessing(true);
+    setProcessingStep(0);
+
+    // First step - 5 seconds
+    setTimeout(() => {
+      setProcessingStep(1);
+      // Second step - 5 seconds
+      setTimeout(() => {
+        setProcessingStep(2);
+        // Third step - 5 seconds
+        setTimeout(() => {
+          // Show results after 15 seconds total
+          setShowProcessing(false);
+          setShowResults(true);
+        }, 5000);
+      }, 5000);
+    }, 5000);
+  };
+
+  const handleSubmit = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      // Final submission - start processing
+      startProcessing();
+    }
+  };
+
+  const handleIDontKnow = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      // Final submission - start processing
+      startProcessing();
+    }
+  };
+
+  const handleSkip = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      // Final submission - start processing
+      startProcessing();
+    }
+  };
 
   const handleInputChange = (field: keyof QuestionnaireData, value: string) => {
     setFormData((prev) => ({
@@ -110,119 +198,16 @@ export default function QuestionnairePage() {
     }));
   };
 
-  const handleSubmit = () => {
-    if (currentQuestion < questions.length - 1) {
-      if (currentQuestion === 3) {
-        // After aliases question
-        setIsLoading(true);
-        setTimeout(() => {
-          setIsLoading(false);
-          setShowVerification(true);
-          setTimeout(() => {
-            setShowVerification(false);
-            setCurrentQuestion(currentQuestion + 1);
-          }, 3000);
-        }, 2000);
-      } else {
-        setCurrentQuestion(currentQuestion + 1);
-      }
-    } else {
-      // Final submission
-      console.log("Final form data:", formData);
-      alert("Questionnaire completed!");
-    }
-  };
-
-  const handleIDontKnow = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      console.log("Final form data:", formData);
-      alert("Questionnaire completed!");
-    }
-  };
-
-  const handleSkip = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      console.log("Final form data:", formData);
-      alert("Questionnaire completed!");
-    }
-  };
-
-  if (isLoading) {
+  if (showResults) {
     return (
       <div className={styles.questionnaireContainer}>
-        <header className={styles.questionnaireHeader}>
-          <div className={styles.questionnaireHeaderContent}>
-            <div className={styles.questionnaireLogo}>
-              <div className={styles.questionnaireLogoIcon}></div>
-              <span className={styles.questionnaireLogoText}>Observr</span>
-            </div>
-            <nav className={styles.questionnaireNav}>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Home
-              </a>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Saved
-              </a>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Pricing
-              </a>
-            </nav>
-            <div className={styles.questionnaireProfileAvatar}>
-              <Image
-                src="/placeholder.svg?height=40&width=40"
-                alt="Profile"
-                width={40}
-                height={40}
-                className={styles.questionnaireAvatarImage}
-              />
-            </div>
-          </div>
-        </header>
-
         <main className={styles.questionnaireMain}>
-          <div className={styles.questionnaireLoadingContainer}>
-            <div className={styles.questionnaireLoadingIcon}>
-              <svg
-                className={styles.questionnaireLoadingSvg}
-                viewBox="0 0 100 100"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="45"
-                  fill="none"
-                  stroke="#e5e7eb"
-                  strokeWidth="8"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="45"
-                  fill="none"
-                  stroke="#60a5fa"
-                  strokeWidth="8"
-                  strokeDasharray="283"
-                  strokeDashoffset="80"
-                  strokeLinecap="round"
-                  transform="rotate(-90 50 50)"
-                  className={styles.questionnaireLoadingCircle}
-                />
-              </svg>
-              <div className={styles.questionnaireLoadingDocIcon}>📄</div>
-            </div>
-            <h1 className={styles.questionnaireLoadingTitle}>
-              Looking Up Public Profiles for "Robinson Crusoe"
+          <div className={styles.questionnaireResultsContainer}>
+            <h1 className={styles.questionnaireResultsTitle}>
+              Processing Complete!
             </h1>
-            <p className={styles.questionnaireLoadingSubtitle}>
-              We're scanning the open web to find real people behind the name —
-              <br />
-              with a 99.7% match accuracy based on usernames, bios, and public
-              <br />
-              photos.
+            <p className={styles.questionnaireResultsSubtitle}>
+              Your search has been completed successfully.
             </p>
           </div>
         </main>
@@ -230,43 +215,16 @@ export default function QuestionnairePage() {
     );
   }
 
-  if (showVerification) {
+  if (showProcessing) {
+    const currentStepData = processingSteps[processingStep];
+
     return (
       <div className={styles.questionnaireContainer}>
-        <header className={styles.questionnaireHeader}>
-          <div className={styles.questionnaireHeaderContent}>
-            <div className={styles.questionnaireLogo}>
-              <div className={styles.questionnaireLogoIcon}></div>
-              <span className={styles.questionnaireLogoText}>Observr</span>
-            </div>
-            <nav className={styles.questionnaireNav}>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Home
-              </a>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Saved
-              </a>
-              <a href="#" className={styles.questionnaireNavLink}>
-                Pricing
-              </a>
-            </nav>
-            <div className={styles.questionnaireProfileAvatar}>
-              <Image
-                src="/placeholder.svg?height=40&width=40"
-                alt="Profile"
-                width={40}
-                height={40}
-                className={styles.questionnaireAvatarImage}
-              />
-            </div>
-          </div>
-        </header>
-
         <main className={styles.questionnaireMain}>
-          <div className={styles.questionnaireVerificationContainer}>
-            <div className={styles.questionnaireVerificationIcon}>
+          <div className={styles.questionnaireProcessingContainer}>
+            <div className={styles.questionnaireProcessingIcon}>
               <svg
-                className={styles.questionnaireVerificationSvg}
+                className={styles.questionnaireProcessingSvg}
                 viewBox="0 0 100 100"
               >
                 <circle
@@ -285,22 +243,25 @@ export default function QuestionnairePage() {
                   stroke="#60a5fa"
                   strokeWidth="8"
                   strokeDasharray="283"
-                  strokeDashoffset="80"
+                  strokeDashoffset={283 - (283 * progress) / 100}
                   strokeLinecap="round"
                   transform="rotate(-90 50 50)"
-                  className={styles.questionnaireVerificationCircle}
+                  className={styles.questionnaireProcessingCircle}
                 />
               </svg>
-              <div className={styles.questionnaireVerificationUserIcon}>👤</div>
             </div>
-            <h1 className={styles.questionnaireVerificationTitle}>
-              Verifying Identity Match
+            <h1 className={styles.questionnaireProcessingTitle}>
+              {currentStepData.title}
             </h1>
-            <p className={styles.questionnaireVerificationSubtitle}>
-              With a 99.7% identity match accuracy, we make sure you're viewing
-              the
-              <br />
-              right profile — not just a lookalike.
+            <p className={styles.questionnaireProcessingSubtitle}>
+              {currentStepData.subtitle.split("\n").map((line, index) => (
+                <span key={index}>
+                  {line}
+                  {index < currentStepData.subtitle.split("\n").length - 1 && (
+                    <br />
+                  )}
+                </span>
+              ))}
             </p>
           </div>
         </main>
@@ -312,35 +273,6 @@ export default function QuestionnairePage() {
 
   return (
     <div className={styles.questionnaireContainer}>
-      <header className={styles.questionnaireHeader}>
-        <div className={styles.questionnaireHeaderContent}>
-          <div className={styles.questionnaireLogo}>
-            <div className={styles.questionnaireLogoIcon}></div>
-            <span className={styles.questionnaireLogoText}>Observr</span>
-          </div>
-          <nav className={styles.questionnaireNav}>
-            <a href="#" className={styles.questionnaireNavLink}>
-              Home
-            </a>
-            <a href="#" className={styles.questionnaireNavLink}>
-              Saved
-            </a>
-            <a href="#" className={styles.questionnaireNavLink}>
-              Pricing
-            </a>
-          </nav>
-          <div className={styles.questionnaireProfileAvatar}>
-            <Image
-              src="/placeholder.svg?height=40&width=40"
-              alt="Profile"
-              width={40}
-              height={40}
-              className={styles.questionnaireAvatarImage}
-            />
-          </div>
-        </div>
-      </header>
-
       <main className={styles.questionnaireMain}>
         <div className={styles.questionnaireQuestionContainer}>
           <h1 className={styles.questionnaireQuestionTitle}>
@@ -353,32 +285,40 @@ export default function QuestionnairePage() {
           <div className={styles.questionnaireInputSection}>
             {currentQ.type === "input" && (
               <div className={styles.questionnaireInputContainer}>
-                <input
-                  type="text"
-                  placeholder={currentQ.placeholder}
-                  value={formData[currentQ.id as keyof QuestionnaireData]}
-                  onChange={(e) =>
-                    handleInputChange(
-                      currentQ.id as keyof QuestionnaireData,
-                      e.target.value
-                    )
-                  }
-                  className={styles.questionnaireInput}
-                />
-                <div className={styles.questionnaireButtonGroup}>
-                  <button
-                    onClick={handleSubmit}
-                    className={styles.questionnaireSubmitButton}
-                  >
-                    Submit
-                  </button>
-                  <button
-                    onClick={handleIDontKnow}
-                    className={styles.questionnaireIDontKnowButton}
-                  >
-                    I don't know
-                  </button>
+                <div className={styles.questionnaireInputWithButtons}>
+                  <input
+                    type="text"
+                    placeholder={currentQ.placeholder}
+                    value={formData[currentQ.id as keyof QuestionnaireData]}
+                    onChange={(e) =>
+                      handleInputChange(
+                        currentQ.id as keyof QuestionnaireData,
+                        e.target.value
+                      )
+                    }
+                    className={styles.questionnaireInput}
+                  />
+                  <div className={styles.questionnaireButtonGroup}>
+                    <button
+                      onClick={handleSubmit}
+                      className={styles.questionnaireSubmitButton}
+                    >
+                      Submit
+                    </button>
+                    <button
+                      onClick={handleIDontKnow}
+                      className={styles.questionnaireIDontKnowButton}
+                    >
+                      I don't know
+                    </button>
+                  </div>
                 </div>
+                <button
+                  onClick={handleSkip}
+                  className={styles.questionnaireSkipButton}
+                >
+                  SKIP
+                </button>
               </div>
             )}
 
@@ -411,34 +351,7 @@ export default function QuestionnairePage() {
                     </label>
                   ))}
                 </div>
-              </div>
-            )}
-
-            {currentQ.type === "select" && (
-              <div className={styles.questionnaireSelectContainer}>
-                <div className={styles.questionnaireSelectWrapper}>
-                  {currentQ.id === "location" && (
-                    <div className={styles.questionnaireLocationIcon}>📍</div>
-                  )}
-                  <select
-                    value={formData[currentQ.id as keyof QuestionnaireData]}
-                    onChange={(e) =>
-                      handleInputChange(
-                        currentQ.id as keyof QuestionnaireData,
-                        e.target.value
-                      )
-                    }
-                    className={styles.questionnaireSelect}
-                  >
-                    <option value="">{currentQ.placeholder}</option>
-                    {currentQ.options?.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className={styles.questionnaireButtonGroup}>
+                <div className={styles.questionnaireRadioButtonGroup}>
                   <button
                     onClick={handleSubmit}
                     className={styles.questionnaireSubmitButton}
@@ -452,15 +365,63 @@ export default function QuestionnairePage() {
                     I don't know
                   </button>
                 </div>
+                <button
+                  onClick={handleSkip}
+                  className={styles.questionnaireSkipButton}
+                >
+                  SKIP
+                </button>
               </div>
             )}
 
-            <button
-              onClick={handleSkip}
-              className={styles.questionnaireSkipButton}
-            >
-              SKIP
-            </button>
+            {currentQ.type === "select" && (
+              <div className={styles.questionnaireSelectContainer}>
+                <div className={styles.questionnaireSelectWithButtons}>
+                  <div className={styles.questionnaireSelectWrapper}>
+                    {currentQ.id === "location" && (
+                      <div className={styles.questionnaireLocationIcon}>📍</div>
+                    )}
+                    <select
+                      value={formData[currentQ.id as keyof QuestionnaireData]}
+                      onChange={(e) =>
+                        handleInputChange(
+                          currentQ.id as keyof QuestionnaireData,
+                          e.target.value
+                        )
+                      }
+                      className={styles.questionnaireSelect}
+                    >
+                      <option value="">{currentQ.placeholder}</option>
+                      {currentQ.options?.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className={styles.questionnaireButtonGroup}>
+                    <button
+                      onClick={handleSubmit}
+                      className={styles.questionnaireSubmitButton}
+                    >
+                      Submit
+                    </button>
+                    <button
+                      onClick={handleIDontKnow}
+                      className={styles.questionnaireIDontKnowButton}
+                    >
+                      I don't know
+                    </button>
+                  </div>
+                </div>
+                <button
+                  onClick={handleSkip}
+                  className={styles.questionnaireSkipButton}
+                >
+                  SKIP
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </main>
