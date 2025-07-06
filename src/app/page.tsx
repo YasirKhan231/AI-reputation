@@ -1,103 +1,146 @@
 import Image from "next/image";
+import styles from "@/css/page.module.css";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <div className={styles.container}>
+      {/* Header */}
+      <header className={styles.header}>
+        <div className={styles.headerContent}>
+          <div className={styles.logo}>
+            <div className={styles.logoIcon}></div>
+            <span className={styles.logoText}>Observr</span>
+          </div>
+          <nav className={styles.nav}>
+            <a href="#" className={styles.navLink}>
+              Home
+            </a>
+            <a href="#" className={styles.navLink}>
+              Saved
+            </a>
+            <a href="#" className={styles.navLink}>
+              Pricing
+            </a>
+          </nav>
+          <div className={styles.profileAvatar}>
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/placeholder.svg?height=40&width=40"
+              alt="Profile"
+              width={40}
+              height={40}
+              className={styles.avatarImage}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className={styles.main}>
+        {/* Left Decorative Card */}
+        <div className={styles.leftCard}>
+          <div className={styles.cardHeader}>
+            <span className={styles.cardTitle}>Gross profit margin</span>
+            <span className={styles.cardPercentage}>7/8</span>
+          </div>
+          <div className={styles.cardValue}>4,266</div>
+          <div className={styles.cardSubtext}>
+            <span className={styles.viewTrend}>VIEW TREND</span>
+            <span className={styles.cardPeriod}>for the last 6 months</span>
+          </div>
+          <div className={styles.chartContainer}>
+            <div className={styles.chart}>
+              {Array.from({ length: 12 }).map((_, i) => (
+                <div
+                  key={i}
+                  className={styles.chartBar}
+                  style={{ height: `${Math.random() * 60 + 20}%` }}
+                ></div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Section */}
+        <div className={styles.hero}>
+          <h1 className={styles.heroTitle}>
+            Make People Decisions
+            <br />
+            with <span className={styles.confidenceText}>Confidence</span>
+          </h1>
+          <p className={styles.heroSubtitle}>
+            Get transparent, AI-synthesized reports from public data —<br />
+            no guessing, no stalking, just signal.
+          </p>
+
+          <div className={styles.searchSection}>
+            <div className={styles.searchContainer}>
+              <input
+                type="text"
+                placeholder="Search by Name, Email, Social"
+                className={styles.searchInput}
+              />
+              <div className={styles.searchButtons}>
+                <button className={styles.observrButton}>Observr.ai</button>
+                <button className={styles.searchButton}>Search</button>
+              </div>
+            </div>
+          </div>
+
+          <button className={styles.upgradeButton}>Upgrade To Pro</button>
+
+          <div className={styles.testimonial}>
+            <div className={styles.stars}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span key={i} className={styles.star}>
+                  ★
+                </span>
+              ))}
+            </div>
+            <span className={styles.testimonialText}>
+              Received the most valuable voting by Kota
+            </span>
+          </div>
+        </div>
+
+        {/* Right Decorative Card */}
+        <div className={styles.rightCard}>
+          <div className={styles.accuracyCard}>
+            <div className={styles.accuracyHeader}>
+              <span className={styles.accuracyLabel}>On-Time Accuracy</span>
+            </div>
+            <div className={styles.circularProgress}>
+              <svg className={styles.progressSvg} viewBox="0 0 100 100">
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="none"
+                  stroke="#e5e7eb"
+                  strokeWidth="8"
+                />
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  fill="none"
+                  stroke="#60a5fa"
+                  strokeWidth="8"
+                  strokeDasharray="283"
+                  strokeDashoffset="80"
+                  strokeLinecap="round"
+                  transform="rotate(-90 50 50)"
+                />
+              </svg>
+              <div className={styles.progressText}>70.5%</div>
+            </div>
+            <div className={styles.accuracyFooter}>
+              <span className={styles.accuracyNote}>
+                It's good enough that this is what we believe
+              </span>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
