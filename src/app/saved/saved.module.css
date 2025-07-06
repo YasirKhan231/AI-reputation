@@ -1,0 +1,261 @@
+.savedContainer {
+  min-height: 100vh;
+  background-color: white;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.savedMain {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.savedContent {
+  width: 100%;
+}
+
+.savedTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 32px;
+  font-family: "Inter", sans-serif;
+}
+
+.savedProfilesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.savedProfileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.savedProfileCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.savedProfileLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.savedProfileImage {
+  flex-shrink: 0;
+}
+
+.savedProfilePicture {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.savedProfileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.savedProfileName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.savedProfileDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.savedProfileIcon {
+  width: 14px;
+  height: 14px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.savedProfileText {
+  font-size: 14px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.savedProfileRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.savedButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.savedButton:hover {
+  background: #e5e7eb;
+}
+
+.savedButtonIcon {
+  width: 14px;
+  height: 14px;
+  fill: #ef4444;
+}
+
+.savedSocialMedia {
+  display: flex;
+  gap: 8px;
+}
+
+.savedSocialButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.savedSocialButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.savedSocialFacebook {
+  background: #1877f2;
+  color: white;
+}
+
+.savedSocialFacebook:hover {
+  background: #166fe5;
+}
+
+.savedSocialTwitter {
+  background: #000000;
+  color: white;
+}
+
+.savedSocialTwitter:hover {
+  background: #333333;
+}
+
+.savedSocialLinkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.savedSocialLinkedin:hover {
+  background: #095bb5;
+}
+
+.savedSocialInstagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.savedSocialInstagram:hover {
+  opacity: 0.9;
+}
+
+.savedTags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.savedTag {
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .savedMain {
+    padding: 16px;
+  }
+
+  .savedTitle {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .savedProfileCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .savedProfileLeft {
+    width: 100%;
+  }
+
+  .savedProfileRight {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .savedSocialMedia {
+    order: 1;
+  }
+
+  .savedTags {
+    order: 2;
+  }
+
+  .savedButton {
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .savedProfileLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .savedProfileRight {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .savedTags {
+    justify-content: center;
+  }
+}

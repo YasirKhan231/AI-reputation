@@ -8,8 +8,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
-  min-height: 100vh;
+  padding: 20px 20px 60px;
+  min-height: calc(100vh - 180px);
 }
 
 .questionnaireQuestionContainer {
@@ -348,5 +348,9 @@
 
   .questionnaireProcessingTitle {
     font-size: 22px;
+  }
+
+  .questionnaireMain {
+    min-height: calc(100vh - 100px);
   }
 }

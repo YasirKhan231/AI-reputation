@@ -23,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+.main-content {
+  padding-top: 180px;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -34,5 +38,11 @@ a {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 100px;
   }
 }
