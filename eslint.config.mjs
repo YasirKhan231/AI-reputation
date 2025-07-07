@@ -30,6 +30,7 @@ export default [
       },
     },
     rules: {
+      "react/react-in-jsx-scope": "off",
       // ❌ Turn off unused variable warnings
       "@typescript-eslint/no-unused-vars": "off",
 
