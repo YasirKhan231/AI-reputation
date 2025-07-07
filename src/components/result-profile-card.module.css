@@ -1,0 +1,218 @@
+.resultsProfileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.resultsProfileCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.resultsProfileLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.resultsProfileImage {
+  flex-shrink: 0;
+}
+
+.resultsProfilePicture {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.resultsProfileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resultsProfileName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.resultsProfileDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resultsProfileIcon {
+  width: 14px;
+  height: 14px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.resultsProfileText {
+  font-size: 14px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.resultsProfileRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.resultsMatchBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #eff6ff;
+  border: 1px solid #3b82f6;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #3b82f6;
+  font-family: "Inter", sans-serif;
+}
+
+.resultsMatchIcon {
+  width: 12px;
+  height: 12px;
+  fill: #3b82f6;
+}
+
+.resultsSocialMedia {
+  display: flex;
+  gap: 8px;
+}
+
+.resultsSocialButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.resultsSocialButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.resultsSocialFacebook {
+  background: #1877f2;
+  color: white;
+}
+
+.resultsSocialFacebook:hover {
+  background: #166fe5;
+}
+
+.resultsSocialTwitter {
+  background: #000000;
+  color: white;
+}
+
+.resultsSocialTwitter:hover {
+  background: #333333;
+}
+
+.resultsSocialLinkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.resultsSocialLinkedin:hover {
+  background: #095bb5;
+}
+
+.resultsSocialInstagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.resultsSocialInstagram:hover {
+  opacity: 0.9;
+}
+
+.resultsTags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.resultsTag {
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .resultsProfileCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .resultsProfileLeft {
+    width: 100%;
+  }
+
+  .resultsProfileRight {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .resultsSocialMedia {
+    order: 1;
+  }
+
+  .resultsTags {
+    order: 2;
+  }
+
+  .resultsMatchBadge {
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .resultsProfileLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .resultsProfileRight {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .resultsTags {
+    justify-content: center;
+  }
+}

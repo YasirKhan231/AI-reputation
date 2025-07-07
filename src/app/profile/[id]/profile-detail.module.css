@@ -1,0 +1,302 @@
+.profileDetailContainer {
+  min-height: 100vh;
+  background-color: white;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.profileDetailMain {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.profileDetailContent {
+  width: 100%;
+}
+
+.profileDetailHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  margin-bottom: 24px;
+}
+
+.profileDetailImageSection {
+  flex-shrink: 0;
+}
+
+.profileDetailPicture {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f3f4f6;
+}
+
+.profileDetailInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profileDetailName {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailDetail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileDetailIcon {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.profileDetailText {
+  font-size: 16px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailActions {
+  flex-shrink: 0;
+}
+
+.profileDetailSaveButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: white;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailSaveButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.profileDetailSaveButtonActive {
+  background: #1f2937;
+  color: white;
+  border-color: #1f2937;
+}
+
+.profileDetailSaveButtonActive:hover {
+  background: #374151;
+  border-color: #374151;
+}
+
+.profileDetailSaveIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.profileDetailBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profileDetailSection {
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+}
+
+.profileDetailSectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 16px 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailSocialMedia {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profileDetailSocialButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailSocialButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.profileDetailSocialFacebook {
+  background: #1877f2;
+  color: white;
+}
+
+.profileDetailSocialFacebook:hover {
+  background: #166fe5;
+}
+
+.profileDetailSocialTwitter {
+  background: #000000;
+  color: white;
+}
+
+.profileDetailSocialTwitter:hover {
+  background: #333333;
+}
+
+.profileDetailSocialLinkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.profileDetailSocialLinkedin:hover {
+  background: #095bb5;
+}
+
+.profileDetailSocialInstagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.profileDetailSocialInstagram:hover {
+  opacity: 0.9;
+}
+
+.profileDetailTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.profileDetailTag {
+  padding: 8px 16px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  font-size: 16px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+}
+
+.errorText {
+  font-size: 16px;
+  color: #ef4444;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+}
+
+.backButton {
+  padding: 12px 24px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: "Inter", sans-serif;
+}
+
+.backButton:hover {
+  background: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .profileDetailMain {
+    padding: 16px;
+  }
+
+  .profileDetailHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .profileDetailName {
+    font-size: 24px;
+  }
+
+  .profileDetailSocialMedia {
+    justify-content: center;
+  }
+
+  .profileDetailTags {
+    justify-content: center;
+  }
+}

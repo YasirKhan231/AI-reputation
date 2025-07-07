@@ -1,0 +1,233 @@
+.profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.profileCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profileLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.profileImage {
+  flex-shrink: 0;
+}
+
+.profilePicture {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profileName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profileIcon {
+  width: 14px;
+  height: 14px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.profileText {
+  font-size: 14px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: "Inter", sans-serif;
+}
+
+.saveButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.saveButtonActive {
+  background: #1f2937;
+  color: white;
+  border-color: #1f2937;
+}
+
+.saveButtonActive:hover {
+  background: #374151;
+  border-color: #374151;
+}
+
+.saveButtonIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.socialMedia {
+  display: flex;
+  gap: 8px;
+}
+
+.socialButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.socialButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.socialFacebook {
+  background: #1877f2;
+  color: white;
+}
+
+.socialFacebook:hover {
+  background: #166fe5;
+}
+
+.socialTwitter {
+  background: #000000;
+  color: white;
+}
+
+.socialTwitter:hover {
+  background: #333333;
+}
+
+.socialLinkedin {
+  background: #0a66c2;
+  color: white;
+}
+
+.socialLinkedin:hover {
+  background: #095bb5;
+}
+
+.socialInstagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.socialInstagram:hover {
+  opacity: 0.9;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .profileCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .profileLeft {
+    width: 100%;
+  }
+
+  .profileRight {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .socialMedia {
+    order: 1;
+  }
+
+  .tags {
+    order: 2;
+  }
+
+  .saveButton {
+    order: 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .profileRight {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .tags {
+    justify-content: center;
+  }
+}

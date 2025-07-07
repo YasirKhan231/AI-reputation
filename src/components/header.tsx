@@ -1,18 +1,21 @@
 import Image from "next/image";
 import styles from "./header.module.css";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
         <div className={styles.headerLogo}>
-          <Image
-            src="/observr-logo.png"
-            alt="Observr Logo"
-            width={120}
-            height={32}
-            className={styles.headerLogoImage}
-          />
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              alt="Observr Logo"
+              width={120}
+              height={32}
+              className={styles.headerLogoImage}
+            />
+          </Link>
         </div>
         <nav className={styles.headerNav}>
           <a href="/" className={styles.headerNavLink}>
@@ -27,7 +30,7 @@ export default function Header() {
         </nav>
         <div className={styles.headerProfileAvatar}>
           <Image
-            src="/placeholder.svg?height=40&width=40"
+            src="/profile.svg"
             alt="Profile"
             width={40}
             height={40}

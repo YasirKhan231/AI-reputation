@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./questions.module.css";
+import { useRouter } from "next/navigation";
 
 interface QuestionnaireData {
   education: string;
@@ -120,7 +121,7 @@ export default function QuestionnairePage() {
   const [showProcessing, setShowProcessing] = useState(false);
   const [processingStep, setProcessingStep] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [showResults, setShowResults] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (showProcessing) {
@@ -158,7 +159,7 @@ export default function QuestionnairePage() {
         setTimeout(() => {
           // Show results after 15 seconds total
           setShowProcessing(false);
-          setShowResults(true);
+          router.push("/results");
         }, 5000);
       }, 5000);
     }, 5000);
@@ -197,23 +198,6 @@ export default function QuestionnairePage() {
       [field]: value,
     }));
   };
-
-  if (showResults) {
-    return (
-      <div className={styles.questionnaireContainer}>
-        <main className={styles.questionnaireMain}>
-          <div className={styles.questionnaireResultsContainer}>
-            <h1 className={styles.questionnaireResultsTitle}>
-              Processing Complete!
-            </h1>
-            <p className={styles.questionnaireResultsSubtitle}>
-              Your search has been completed successfully.
-            </p>
-          </div>
-        </main>
-      </div>
-    );
-  }
 
   if (showProcessing) {
     const currentStepData = processingSteps[processingStep];
