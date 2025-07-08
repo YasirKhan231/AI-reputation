@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ProfileList from "@/components/profile-list";
-import type { PersonProfile } from "@/types/profile";
-import { fetchProfiles } from "@/data/profiles"; // Adjust the import path as necessary
+import ProfileList from "../../components/profile-list";
+import type { PersonProfile } from "../../types/profile";
+import { fetchProfiles } from "../../lib/profile-service";
 import styles from "./saved.module.css";
 
 export default function SavedPage() {

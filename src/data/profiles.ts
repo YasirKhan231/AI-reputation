@@ -1,123 +1,768 @@
-import type { PersonProfile } from "@/types/profile"
+import type { PersonProfile } from "../types/profile"
 
 export const mockProfiles: PersonProfile[] = [
   {
     id: 1,
-    name: "Alex Johnson",
+    name: "Robinson Crusoe",
+    nickname: "Jack",
     location: "Austin, TX",
     profession: "Software Engineer",
     company: "Google",
     previousCompany: "Apple",
-    email: "alex.johnson@gmail.com",
+    email: "robinsoncrusoe@gmail.com",
+    phone: "+1 408 487 1457",
     profilePicture: "/profiles/profile1.jpg",
     tags: ["Philosophy", "Technology", "Design"],
     socialMedia: {
-      facebook: "https://facebook.com/alexjohnson",
-      twitter: "https://twitter.com/alexjohnson",
-      linkedin: "https://linkedin.com/in/alexjohnson",
-      instagram: "https://instagram.com/alexjohnson",
+      facebook: "https://facebook.com/robinsoncrusoe",
+      twitter: "https://twitter.com/robinsoncrusoe",
+      linkedin: "https://linkedin.com/in/robinsoncrusoe",
+      instagram: "https://instagram.com/robinsoncrusoe",
     },
     saved: true,
+    personalInfo: {
+      age: 25,
+      height: "N/A",
+      gender: "Male",
+      currentCity: "Austin, TX",
+    },
+    relatedPeople: [
+      {
+        id: 1,
+        name: "Emily Dickinson",
+        relationship: "Sister",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 2,
+        name: "John Denver",
+        relationship: "Friend",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 3,
+        name: "Jane Denver",
+        relationship: "Mentor",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 4,
+        name: "Eleanor Rugby",
+        relationship: "Partner",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 5,
+        name: "John Williams",
+        relationship: "Friend",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+    photos: [
+      { id: 1, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+      { id: 2, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 3, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+      { id: 4, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 5, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+      { id: 6, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+    ],
+    videos: [
+      {
+        id: 1,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 2,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 3,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 4,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 5,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 6,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+    ],
+    publicSentiment: {
+      score: 85,
+      trend: [
+        { date: "Jan", score: 75 },
+        { date: "Feb", score: 78 },
+        { date: "Mar", score: 82 },
+        { date: "Apr", score: 85 },
+        { date: "May", score: 88 },
+        { date: "Jun", score: 85 },
+      ],
+      mentions: [
+        {
+          id: 1,
+          text: "Announced beta release of AI audit tool — huge traction",
+          type: "achievement",
+          date: "View feed",
+          source: "Twitter",
+        },
+        {
+          id: 2,
+          text: "Featured in Wired's Top 100 Innovators",
+          type: "feature",
+          date: "View feed",
+          source: "Wired",
+        },
+        {
+          id: 3,
+          text: "Posted viral thread on startup mental health — 12k likes",
+          type: "mention",
+          date: "View feed",
+          source: "Twitter",
+        },
+      ],
+    },
+    flaggedContents: [
+      {
+        id: 1,
+        text: "Diversity hires are just companies trying to look good. We shouldn't have to lower standards to meet some quota",
+        tags: ["Toxic", "Political Extremism"],
+        date: "20 Jan 2025",
+        source: "Twitter",
+      },
+      {
+        id: 2,
+        text: "The climate crisis is mostly a scam. It's a power grab disguised as science — and people are falling for it.",
+        tags: ["Anti-science", "Polarizing political view"],
+        date: "30 Jan 2025",
+        source: "Reddit",
+      },
+      {
+        id: 3,
+        text: "If you can't handle pressure, you don't belong in a startup.",
+        tags: ["Aggressive", "Toxic leadership tone"],
+        date: "20 Jan 2025",
+        source: "Facebook",
+      },
+    ],
+    positiveMarks: [
+      {
+        id: 1,
+        type: "endorsement",
+        title: "Endorsements",
+        description: "Recognized as 'Employee of the Month' by leadership",
+        icon: "👍",
+      },
+      {
+        id: 2,
+        type: "clean_record",
+        title: "Clean Record",
+        description: "No controversial content detected in 2+ years",
+        icon: "✅",
+      },
+      {
+        id: 3,
+        type: "achievement",
+        title: "Achievement",
+        description: "Published article on industry best practices",
+        icon: "🏆",
+      },
+      {
+        id: 4,
+        type: "community",
+        title: "Community",
+        description: "Active volunteer at local tech meetups",
+        icon: "👥",
+      },
+    ],
+    educationProfession: [
+      {
+        id: 1,
+        type: "profession",
+        title: "Product Designer",
+        organization: "Orville",
+        startYear: 2020,
+        current: true,
+      },
+      {
+        id: 2,
+        type: "education",
+        title: "Graduated from MIT",
+        organization: "MIT",
+        startYear: 2016,
+        endYear: 2020,
+      },
+      {
+        id: 3,
+        type: "profession",
+        title: "Graphic designer",
+        organization: "DDC",
+        startYear: 2015,
+        endYear: 2018,
+      },
+      {
+        id: 4,
+        type: "profession",
+        title: "Graphic designer",
+        organization: "DDC",
+        startYear: 2015,
+        endYear: 2018,
+      },
+      {
+        id: 5,
+        type: "profession",
+        title: "Graphic designer",
+        organization: "DDC",
+        startYear: 2015,
+        endYear: 2018,
+      },
+    ],
   },
   {
     id: 2,
     name: "Maria Rodriguez",
+    nickname: "Mari",
     location: "San Francisco, CA",
     profession: "Product Manager",
     company: "Meta",
+    previousCompany: "Twitter",
     email: "maria.rodriguez@meta.com",
+    phone: "+1 415 555 1234",
     profilePicture: "/profiles/profile2.jpg",
     tags: ["Gaming", "Engineering", "Development"],
     socialMedia: {
+      facebook: "https://facebook.com/mariarodriguez",
       twitter: "https://twitter.com/mariarodriguez",
       linkedin: "https://linkedin.com/in/mariarodriguez",
       instagram: "https://instagram.com/mariarodriguez",
     },
     saved: true,
+    personalInfo: {
+      age: 28,
+      height: "5'6\"",
+      gender: "Female",
+      currentCity: "San Francisco, CA",
+    },
+    relatedPeople: [
+      {
+        id: 6,
+        name: "Carlos Rodriguez",
+        relationship: "Brother",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 7,
+        name: "Lisa Wong",
+        relationship: "Colleague",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 8,
+        name: "James Smith",
+        relationship: "Mentor",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+    photos: [
+      { id: 7, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 8, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+      { id: 9, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 10, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+    ],
+    videos: [
+      {
+        id: 7,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 8,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+    ],
+    publicSentiment: {
+      score: 92,
+      trend: [
+        { date: "Jan", score: 88 },
+        { date: "Feb", score: 90 },
+        { date: "Mar", score: 92 },
+        { date: "Apr", score: 94 },
+        { date: "May", score: 92 },
+        { date: "Jun", score: 92 },
+      ],
+      mentions: [
+        {
+          id: 4,
+          text: "Led successful launch of Meta's new gaming platform",
+          type: "achievement",
+          date: "View feed",
+          source: "LinkedIn",
+        },
+        {
+          id: 5,
+          text: "Featured in Forbes 30 Under 30 for Product Management",
+          type: "feature",
+          date: "View feed",
+          source: "Forbes",
+        },
+      ],
+    },
+    flaggedContents: [
+      {
+        id: 4,
+        text: "Remote work is just an excuse for lazy people to do less work",
+        tags: ["Toxic", "Insensitive"],
+        date: "15 Mar 2025",
+        source: "Twitter",
+      },
+    ],
+    positiveMarks: [
+      {
+        id: 5,
+        type: "endorsement",
+        title: "Endorsements",
+        description: "Top-rated Product Manager by peers",
+        icon: "👍",
+      },
+      {
+        id: 6,
+        type: "achievement",
+        title: "Achievement",
+        description: "Speaker at TechCrunch Disrupt 2024",
+        icon: "🏆",
+      },
+    ],
+    educationProfession: [
+      {
+        id: 6,
+        type: "education",
+        title: "MBA",
+        organization: "Stanford University",
+        startYear: 2018,
+        endYear: 2020,
+      },
+      {
+        id: 7,
+        type: "profession",
+        title: "Associate Product Manager",
+        organization: "Twitter",
+        startYear: 2020,
+        endYear: 2022,
+      },
+      {
+        id: 8,
+        type: "profession",
+        title: "Product Manager",
+        organization: "Meta",
+        startYear: 2022,
+        current: true,
+      },
+    ],
   },
   {
     id: 3,
     name: "David Chen",
+    nickname: "Dave",
     location: "Seattle, WA",
     profession: "Data Scientist",
     company: "Microsoft",
+    previousCompany: "Amazon",
     email: "david.chen@microsoft.com",
+    phone: "+1 206 555 7890",
     profilePicture: "/profiles/profile3.jpg",
     tags: ["Machine Learning", "Analytics", "Research"],
     socialMedia: {
+      facebook: "https://facebook.com/davidchen",
       twitter: "https://twitter.com/davidchen",
       linkedin: "https://linkedin.com/in/davidchen",
       instagram: "https://instagram.com/davidchen",
     },
     saved: true,
+    personalInfo: {
+      age: 32,
+      height: "5'11\"",
+      gender: "Male",
+      currentCity: "Seattle, WA",
+    },
+    relatedPeople: [
+      {
+        id: 9,
+        name: "Amy Chen",
+        relationship: "Spouse",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 10,
+        name: "Mark Johnson",
+        relationship: "Colleague",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+    photos: [
+      { id: 11, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 12, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+    ],
+    videos: [
+      {
+        id: 9,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+    ],
+    publicSentiment: {
+      score: 78,
+      trend: [
+        { date: "Jan", score: 75 },
+        { date: "Feb", score: 76 },
+        { date: "Mar", score: 77 },
+        { date: "Apr", score: 78 },
+        { date: "May", score: 78 },
+        { date: "Jun", score: 78 },
+      ],
+      mentions: [
+        {
+          id: 6,
+          text: "Published research paper on neural networks",
+          type: "achievement",
+          date: "View feed",
+          source: "LinkedIn",
+        },
+      ],
+    },
+    flaggedContents: [
+      {
+        id: 5,
+        text: "Privacy laws are holding back AI progress. We should be able to use all data available.",
+        tags: ["Unethical", "Controversial"],
+        date: "10 Feb 2025",
+        source: "Reddit",
+      },
+    ],
+    positiveMarks: [
+      {
+        id: 7,
+        type: "achievement",
+        title: "Achievement",
+        description: "Patent holder for ML algorithm",
+        icon: "🏆",
+      },
+      {
+        id: 8,
+        type: "community",
+        title: "Community",
+        description: "Organizer of local AI meetups",
+        icon: "👥",
+      },
+    ],
+    educationProfession: [
+      {
+        id: 9,
+        type: "education",
+        title: "PhD in Computer Science",
+        organization: "University of Washington",
+        startYear: 2014,
+        endYear: 2018,
+      },
+      {
+        id: 10,
+        type: "profession",
+        title: "Data Scientist",
+        organization: "Amazon",
+        startYear: 2018,
+        endYear: 2021,
+      },
+      {
+        id: 11,
+        type: "profession",
+        title: "Senior Data Scientist",
+        organization: "Microsoft",
+        startYear: 2021,
+        current: true,
+      },
+    ],
   },
   {
     id: 4,
     name: "Sarah Williams",
+    nickname: "Sara",
     location: "New York, NY",
     profession: "UX Designer",
     company: "Airbnb",
+    previousCompany: "Uber",
     email: "sarah.williams@airbnb.com",
+    phone: "+1 212 555 4567",
     profilePicture: "/profiles/profile4.jpg",
     tags: ["Design", "User Experience", "Creative"],
     socialMedia: {
+      facebook: "https://facebook.com/sarahwilliams",
       twitter: "https://twitter.com/sarahwilliams",
       linkedin: "https://linkedin.com/in/sarahwilliams",
       instagram: "https://instagram.com/sarahwilliams",
     },
     saved: true,
+    personalInfo: {
+      age: 29,
+      height: "5'7\"",
+      gender: "Female",
+      currentCity: "New York, NY",
+    },
+    relatedPeople: [
+      {
+        id: 11,
+        name: "Tom Williams",
+        relationship: "Brother",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 12,
+        name: "Emma Stone",
+        relationship: "Friend",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+    photos: [
+      { id: 13, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 14, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "instagram" },
+      { id: 15, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+    ],
+    videos: [
+      {
+        id: 10,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+      {
+        id: 11,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "tiktok",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+    ],
+    publicSentiment: {
+      score: 95,
+      trend: [
+        { date: "Jan", score: 92 },
+        { date: "Feb", score: 93 },
+        { date: "Mar", score: 94 },
+        { date: "Apr", score: 95 },
+        { date: "May", score: 95 },
+        { date: "Jun", score: 95 },
+      ],
+      mentions: [
+        {
+          id: 7,
+          text: "Won Design Award for innovative travel app interface",
+          type: "achievement",
+          date: "View feed",
+          source: "Design Weekly",
+        },
+        {
+          id: 8,
+          text: "Featured speaker at UX Conference 2025",
+          type: "feature",
+          date: "View feed",
+          source: "UX Magazine",
+        },
+      ],
+    },
+    flaggedContents: [],
+    positiveMarks: [
+      {
+        id: 9,
+        type: "endorsement",
+        title: "Endorsements",
+        description: "Top-rated designer by users",
+        icon: "👍",
+      },
+      {
+        id: 10,
+        type: "clean_record",
+        title: "Clean Record",
+        description: "No controversial content detected",
+        icon: "✅",
+      },
+    ],
+    educationProfession: [
+      {
+        id: 12,
+        type: "education",
+        title: "BFA in Design",
+        organization: "Rhode Island School of Design",
+        startYear: 2013,
+        endYear: 2017,
+      },
+      {
+        id: 13,
+        type: "profession",
+        title: "Junior Designer",
+        organization: "Uber",
+        startYear: 2017,
+        endYear: 2019,
+      },
+      {
+        id: 14,
+        type: "profession",
+        title: "UX Designer",
+        organization: "Airbnb",
+        startYear: 2019,
+        current: true,
+      },
+    ],
   },
   {
     id: 5,
     name: "Michael Brown",
+    nickname: "Mike",
     location: "Boston, MA",
     profession: "DevOps Engineer",
     company: "Amazon",
+    previousCompany: "IBM",
     email: "michael.brown@amazon.com",
+    phone: "+1 617 555 3456",
     profilePicture: "/profiles/profile5.jpg",
     tags: ["Cloud Computing", "Infrastructure", "Automation"],
     socialMedia: {
+      facebook: "https://facebook.com/michaelbrown",
       twitter: "https://twitter.com/michaelbrown",
       linkedin: "https://linkedin.com/in/michaelbrown",
       instagram: "https://instagram.com/michaelbrown",
     },
     saved: true,
+    personalInfo: {
+      age: 35,
+      height: "6'0\"",
+      gender: "Male",
+      currentCity: "Boston, MA",
+    },
+    relatedPeople: [
+      {
+        id: 13,
+        name: "Jennifer Brown",
+        relationship: "Spouse",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+      {
+        id: 14,
+        name: "Robert Taylor",
+        relationship: "Colleague",
+        profilePicture: "/placeholder.svg?height=40&width=40",
+      },
+    ],
+    photos: [
+      { id: 16, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+      { id: 17, type: "photo", url: "/placeholder.svg?height=150&width=150", platform: "facebook" },
+    ],
+    videos: [
+      {
+        id: 12,
+        type: "video",
+        url: "/placeholder.svg?height=150&width=150",
+        platform: "youtube",
+        thumbnail: "/placeholder.svg?height=150&width=150",
+      },
+    ],
+    publicSentiment: {
+      score: 80,
+      trend: [
+        { date: "Jan", score: 75 },
+        { date: "Feb", score: 77 },
+        { date: "Mar", score: 79 },
+        { date: "Apr", score: 80 },
+        { date: "May", score: 81 },
+        { date: "Jun", score: 80 },
+      ],
+      mentions: [
+        {
+          id: 9,
+          text: "Developed innovative cloud deployment system",
+          type: "achievement",
+          date: "View feed",
+          source: "TechCrunch",
+        },
+      ],
+    },
+    flaggedContents: [
+      {
+        id: 6,
+        text: "Open source software is great until you need actual support - then you get what you pay for",
+        tags: ["Controversial", "Insensitive"],
+        date: "5 May 2025",
+        source: "Twitter",
+      },
+    ],
+    positiveMarks: [
+      {
+        id: 11,
+        type: "achievement",
+        title: "Achievement",
+        description: "AWS Certified Solutions Architect",
+        icon: "🏆",
+      },
+      {
+        id: 12,
+        type: "community",
+        title: "Community",
+        description: "Regular contributor to open source projects",
+        icon: "👥",
+      },
+    ],
+    educationProfession: [
+      {
+        id: 15,
+        type: "education",
+        title: "BS in Computer Science",
+        organization: "MIT",
+        startYear: 2008,
+        endYear: 2012,
+      },
+      {
+        id: 16,
+        type: "profession",
+        title: "Systems Engineer",
+        organization: "IBM",
+        startYear: 2012,
+        endYear: 2016,
+      },
+      {
+        id: 17,
+        type: "profession",
+        title: "DevOps Engineer",
+        organization: "Amazon",
+        startYear: 2016,
+        current: true,
+      },
+    ],
   },
 ]
-
-// Async function to simulate fetching profiles from backend
-export async function fetchProfiles(): Promise<PersonProfile[]> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1000))
-
-  try {
-    // In a real app, this would be an actual API call
-    // const response = await fetch('/api/profiles')
-    // const profiles = await response.json()
-
-    return mockProfiles
-  } catch (error) {
-    console.error("Error fetching profiles:", error)
-    throw new Error("Failed to fetch profiles")
-  }
-}
-
-// Async function to update profile save status
-export async function updateProfileSaveStatus(profileId: number, saved: boolean): Promise<void> {
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 500))
-
-  try {
-    // In a real app, this would be an actual API call
-    // await fetch(`/api/profiles/${profileId}/save`, {
-    //   method: 'PATCH',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ saved })
-    // })
-
-    console.log(`Profile ${profileId} save status updated to: ${saved}`)
-  } catch (error) {
-    console.error("Error updating profile save status:", error)
-    throw new Error("Failed to update profile save status")
-  }
-}

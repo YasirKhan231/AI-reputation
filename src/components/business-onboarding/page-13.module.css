@@ -1,0 +1,88 @@
+.container {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.pageHeader {
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.legalContent {
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+}
+
+.paragraph {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #4f46e5;
+}
+
+.checkboxLabel {
+  font-size: 13px;
+  color: #374151;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .checkboxContainer {
+    padding: 14px;
+  }
+}

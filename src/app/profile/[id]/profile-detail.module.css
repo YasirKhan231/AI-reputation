@@ -1,12 +1,12 @@
 .profileDetailContainer {
   min-height: 100vh;
-  background-color: white;
+  background-color: #f8f9fa;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 .profileDetailMain {
-  padding: 20px;
-  max-width: 1000px;
+  padding: 20px 80px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -16,14 +16,20 @@
 
 .profileDetailHeader {
   display: flex;
-  align-items: flex-start;
-  gap: 24px;
-  padding: 32px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
   background: white;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   margin-bottom: 24px;
+}
+
+.profileDetailLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
 }
 
 .profileDetailImageSection {
@@ -33,129 +39,159 @@
 .profileDetailPicture {
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #f3f4f6;
+  width: 120px;
+  height: 120px;
 }
 
 .profileDetailInfo {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .profileDetailName {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: #1f2937;
-  margin: 0;
+  margin: 0 0 4px 0;
   font-family: "Inter", sans-serif;
 }
 
 .profileDetailDetail {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
 .profileDetailIcon {
-  width: 18px;
-  height: 18px;
-  color: #6b7280;
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
   flex-shrink: 0;
 }
 
 .profileDetailText {
-  font-size: 16px;
+  font-size: 14px;
   color: #6b7280;
   font-family: "Inter", sans-serif;
 }
 
 .profileDetailActions {
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.profileDetailTopActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .profileDetailSaveButton {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   background: white;
-  border: 2px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: "Inter", sans-serif;
 }
 
 .profileDetailSaveButton:hover {
   border-color: #3b82f6;
-  color: #3b82f6;
 }
 
 .profileDetailSaveButtonActive {
   background: #1f2937;
-  color: white;
   border-color: #1f2937;
 }
 
-.profileDetailSaveButtonActive:hover {
-  background: #374151;
-  border-color: #374151;
+.profileDetailSaveButtonActive .profileDetailSaveIcon {
+  color: white;
 }
 
 .profileDetailSaveIcon {
   width: 16px;
   height: 16px;
+  color: #6b7280;
 }
 
-.profileDetailBody {
+.profileDetailShareButton {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.profileDetailSection {
-  padding: 24px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.profileDetailSectionTitle {
-  font-size: 20px;
-  font-weight: 600;
-  color: #1f2937;
-  margin: 0 0 16px 0;
-  font-family: "Inter", sans-serif;
+.profileDetailShareButton:hover {
+  border-color: #3b82f6;
 }
 
-.profileDetailSocialMedia {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+.profileDetailShareIcon {
+  width: 16px;
+  height: 16px;
+  color: #6b7280;
 }
 
-.profileDetailSocialButton {
+.profileDetailDownloadButton {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 12px;
   font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
   transition: all 0.2s ease;
   font-family: "Inter", sans-serif;
 }
 
+.profileDetailDownloadButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.profileDetailDownloadIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.profileDetailSocialMedia {
+  display: flex;
+  gap: 8px;
+}
+
+.profileDetailSocialButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
 .profileDetailSocialButton svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .profileDetailSocialFacebook {
@@ -163,17 +199,9 @@
   color: white;
 }
 
-.profileDetailSocialFacebook:hover {
-  background: #166fe5;
-}
-
 .profileDetailSocialTwitter {
   background: #000000;
   color: white;
-}
-
-.profileDetailSocialTwitter:hover {
-  background: #333333;
 }
 
 .profileDetailSocialLinkedin {
@@ -181,17 +209,9 @@
   color: white;
 }
 
-.profileDetailSocialLinkedin:hover {
-  background: #095bb5;
-}
-
 .profileDetailSocialInstagram {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: white;
-}
-
-.profileDetailSocialInstagram:hover {
-  opacity: 0.9;
 }
 
 .profileDetailTags {
@@ -201,13 +221,501 @@
 }
 
 .profileDetailTag {
-  padding: 8px 16px;
+  padding: 6px 12px;
   background: #f3f4f6;
-  border-radius: 20px;
-  font-size: 14px;
+  border-radius: 16px;
+  font-size: 12px;
   font-weight: 500;
   color: #6b7280;
   font-family: "Inter", sans-serif;
+}
+
+.profileDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.profileDetailLeftColumn,
+.profileDetailRightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profileDetailSection {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: fit-content;
+}
+
+.profileDetailSectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailPersonalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 280px;
+}
+
+.profileDetailInfoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.profileDetailInfoRow:last-child {
+  border-bottom: none;
+}
+
+.profileDetailInfoLabel {
+  font-size: 14px;
+  color: #6b7280;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailInfoValue {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailRelatedPeople {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 280px;
+}
+
+.profileDetailRelatedPerson {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileDetailRelatedPersonImage {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 40px;
+  height: 40px;
+}
+
+.profileDetailRelatedPersonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profileDetailRelatedPersonName {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailRelatedPersonRelation {
+  font-size: 12px;
+  color: #9ca3af;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailSeeMore {
+  background: none;
+  border: 1px solid #d1d5db;
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.profileDetailSeeMore:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+.profileDetailMediaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.profileDetailMediaItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.profileDetailMediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profileDetailMediaPlatform {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+
+.profileDetailVideoContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.profileDetailVideoPlayButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profileDetailVideoPlayButton svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+}
+
+.profileDetailSentiment {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileDetailSentimentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileDetailSentimentScore {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profileDetailSentimentNumber {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+}
+
+.profileDetailSentimentLabel {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profileDetailSentimentPeriod {
+  font-size: 12px;
+  color: #9ca3af;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailChart {
+  position: relative;
+  height: 120px;
+  margin: 20px 0;
+  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 100%);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.profileDetailChartSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.profileDetailChartLabels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding: 0 20px;
+}
+
+.profileDetailChartLabel {
+  font-size: 10px;
+  color: #9ca3af;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+}
+
+.profileDetailMentions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profileDetailMention {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.profileDetailMentionDot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.profileDetailMentionContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.profileDetailMentionText {
+  font-size: 13px;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.profileDetailMentionSource {
+  font-size: 11px;
+  color: #3b82f6;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.profileDetailFlaggedContents {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileDetailFlaggedContent {
+  padding: 16px;
+  background: #fefefe;
+  border-radius: 12px;
+  border: 1px solid #f3f4f6;
+}
+
+.profileDetailFlaggedText {
+  font-size: 13px;
+  color: #1f2937;
+  margin: 0 0 12px 0;
+  font-style: italic;
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+}
+
+.profileDetailFlaggedTags {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.profileDetailFlaggedTag {
+  padding: 4px 8px;
+  background: #fef2f2;
+  color: #dc2626;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailFlaggedMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileDetailFlaggedDate,
+.profileDetailFlaggedSource {
+  font-size: 11px;
+  color: #9ca3af;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailFlaggedSource {
+  color: #3b82f6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.profileDetailMoreFlagged {
+  background: none;
+  border: 1px solid #d1d5db;
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: "Inter", sans-serif;
+  transition: all 0.2s ease;
+}
+
+.profileDetailMoreFlagged:hover {
+  border-color: #3b82f6;
+  background: #f8fafc;
+}
+
+.profileDetailPositiveMarks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileDetailPositiveMark {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.profileDetailPositiveMarkIcon {
+  width: 40px;
+  height: 40px;
+  background: #f0fdf4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px dashed #d1d5db;
+}
+
+.profileDetailPositiveMarkContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profileDetailPositiveMarkTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailPositiveMarkDescription {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  line-height: 1.4;
+}
+
+.profileDetailEducationProfession {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profileDetailEducationItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profileDetailEducationIcon {
+  width: 40px;
+  height: 40px;
+  background: #f8f9fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profileDetailEducationIcon svg {
+  width: 20px;
+  height: 20px;
+  color: #374151;
+}
+
+.profileDetailEducationContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profileDetailEducationTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailEducationOrg {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.profileDetailEducationDate {
+  flex-shrink: 0;
+}
+
+.profileDetailEducationCurrent,
+.profileDetailEducationRange {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.profileDetailEducationCurrent {
+  color: #10b981;
 }
 
 .loadingContainer {
@@ -276,27 +784,66 @@
   background: #2563eb;
 }
 
+@media (max-width: 1200px) {
+  .profileDetailMain {
+    padding: 20px 40px;
+  }
+
+  .profileDetailGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .profileDetailMain {
-    padding: 16px;
+    padding: 16px 20px;
   }
 
   .profileDetailHeader {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 24px;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .profileDetailLeft {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profileDetailActions {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
   }
 
   .profileDetailName {
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  .profileDetailSocialMedia {
-    justify-content: center;
+  .profileDetailMediaGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .profileDetailTags {
+  .profileDetailSection {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileDetailMediaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .profileDetailActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profileDetailDownloadButton {
+    width: 100%;
     justify-content: center;
   }
 }
