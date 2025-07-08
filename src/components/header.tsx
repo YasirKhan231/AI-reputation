@@ -21,10 +21,10 @@ export default function Header() {
           <a href="/" className={styles.headerNavLink}>
             Home
           </a>
-          <a href="/saved" className={styles.headerNavLink}>
+          <a href="/b2c/saved" className={styles.headerNavLink}>
             Saved
           </a>
-          <a href="/pricing" className={styles.headerNavLink}>
+          <a href="/b2c/pricing" className={styles.headerNavLink}>
             Pricing
           </a>
         </nav>

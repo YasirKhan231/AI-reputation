@@ -17,7 +17,7 @@ export default function ResultsProfileCard({
   const router = useRouter();
 
   const handleProfileClick = () => {
-    router.push(`/profile/${profile.id}`);
+    router.push(`/b2c/profile/${profile.id}`);
   };
 
   return (

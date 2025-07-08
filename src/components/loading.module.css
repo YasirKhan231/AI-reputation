@@ -1,184 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;600;700&display=swap");
 
 .container {
   min-height: 100vh;
   background-color: #ffffff;
-  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-/* Navigation */
-.navbar {
-  border-bottom: 1px solid #f1f5f9;
-  padding: 16px 0;
-}
-
-.navContent {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  font-family: "Satoshi", sans-serif;
+  padding-left: 100px; /* Shift 100px to the left */
 }
 
-.logo {
+.content {
   display: flex;
+  width: 100%;
+  max-width: 1000px;
+  height: 100vh;
   align-items: center;
-  gap: 12px;
 }
 
-.logoIcon {
-  position: relative;
-  width: 32px;
-  height: 32px;
-}
-
-.logoCircle {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  border-radius: 50%;
-  position: relative;
-}
-
-.logoCircle::after {
-  content: "";
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-.logoText {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.navLinks {
-  display: flex;
-  gap: 32px;
-}
-
-.navLink {
-  font-size: 16px;
-  font-weight: 500;
-  color: #64748b;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.navLink:hover {
-  color: #4f46e5;
-}
-
-.profileAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.profileAvatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Main Content */
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 24px;
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-/* Sidebar */
+/* Left Sidebar */
 .sidebar {
-  position: sticky;
-  top: 80px;
+  width: 220px;
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
-.categoryList {
+.stepsList {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.categoryItem {
+.stepItem {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   transition: all 0.3s ease;
 }
 
-.categoryIcon {
+.stepIconContainer {
   position: relative;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+}
+
+.iconCircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
+  z-index: 2;
+  position: relative;
 }
 
 .icon {
-  font-size: 20px;
+  /* Icons start with gray color #888888 */
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(53%) sepia(0%) saturate(0%) hue-rotate(173deg) brightness(95%)
+    contrast(87%);
   transition: all 0.3s ease;
 }
 
-.categoryName {
-  font-size: 18px;
-  font-weight: 600;
-  color: #94a3b8;
+.stepTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0%;
+  text-align: left;
+  color: #888888; /* Default gray color for text */
   transition: all 0.3s ease;
 }
 
-/* Active state */
-.categoryItem.active .categoryIcon {
-  background-color: #4f46e5;
-  transform: scale(1.05);
-}
-
-.categoryItem.active .icon {
-  filter: brightness(0) invert(1);
-}
-
-.categoryItem.active .categoryName {
-  color: #4f46e5;
-}
-
-/* Completed state */
-.categoryItem.completed .categoryIcon {
-  background-color: #4f46e5;
-}
-
-.categoryItem.completed .icon {
-  filter: brightness(0) invert(1);
-}
-
-.categoryItem.completed .categoryName {
-  color: #1e293b;
-}
-
-/* Spinner ring */
+/* Spinner Ring Animation - Only shows when active */
 .spinnerRing {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  width: 56px;
-  height: 56px;
+  top: -3px;
+  left: -3px;
+  width: 46px;
+  height: 46px;
   border: 2px solid transparent;
-  border-top: 2px solid #4f46e5;
+  border-top: 2px solid #516bff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  z-index: 1;
 }
 
 @keyframes spin {
@@ -190,13 +107,57 @@
   }
 }
 
-/* Center Content */
-.centerContent {
+/* Active Step Styles - Only spinner shows, no color changes */
+.stepItem.active .iconCircle {
+  /* No background color change */
+  transform: scale(1.05);
+}
+
+.stepItem.active .icon {
+  /* Keep gray color during active state */
+  filter: brightness(0) saturate(100%) invert(53%) sepia(0%) saturate(0%) hue-rotate(173deg) brightness(95%)
+    contrast(87%);
+}
+
+.stepItem.active .stepTitle {
+  /* Keep text gray during active state */
+  color: #888888;
+}
+
+/* Completed Step Styles - Show original colors */
+.stepItem.completed .iconCircle {
+  /* No background color change, keep original */
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.stepItem.completed .icon {
+  /* Change to original icon colors when completed */
+  filter: none;
+  opacity: 1;
+}
+
+.stepItem.completed .stepTitle {
+  /* Change text to original black color when completed */
+  color: #000000;
+  font-weight: 500;
+}
+
+/* Main Content */
+.mainContent {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 48px;
+  justify-content: center;
+  padding: 30px;
+  gap: 50px;
+}
+
+.progressSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .progressContainer {
@@ -210,7 +171,7 @@
   transform: rotate(-90deg);
 }
 
-.progressRingForeground {
+.progressForeground {
   transition: stroke-dashoffset 0.5s ease;
 }
 
@@ -221,115 +182,156 @@
   transform: translate(-50%, -50%);
 }
 
-.progressPercentage {
-  font-size: 48px;
+.percentage {
+  font-family: "Satoshi", sans-serif;
   font-weight: 700;
-  color: #4f46e5;
-}
-
-.textContent {
-  max-width: 600px;
-}
-
-.title {
   font-size: 36px;
-  font-weight: 700;
-  color: #1e293b;
-  margin: 0 0 16px 0;
+  color: #516bff;
+  line-height: 1;
+}
+
+.textSection {
+  text-align: center;
+  max-width: 500px;
+}
+
+.mainTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 28px;
   line-height: 1.2;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #000000;
+  margin: 0 0 16px 0;
 }
 
 .subtitle {
-  font-size: 18px;
+  font-family: "Satoshi", sans-serif;
   font-weight: 400;
-  color: #64748b;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #666666;
   margin: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .main {
-    grid-template-columns: 1fr;
-    gap: 48px;
-    padding: 40px 16px;
+  .container {
+    padding-left: 20px; /* Reduce left padding on mobile */
+  }
+
+  .content {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 16px;
   }
 
   .sidebar {
-    position: static;
-    order: 2;
+    width: 100%;
+    padding: 16px;
+    height: auto;
   }
 
-  .categoryList {
+  .stepsList {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
   }
 
-  .categoryItem {
+  .stepItem {
     flex-direction: column;
-    gap: 8px;
     text-align: center;
+    gap: 6px;
   }
 
-  .categoryName {
+  .stepTitle {
     font-size: 14px;
+    line-height: 1.2;
   }
 
-  .centerContent {
-    order: 1;
+  .stepIconContainer {
+    width: 36px;
+    height: 36px;
+  }
+
+  .iconCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .spinnerRing {
+    width: 42px;
+    height: 42px;
+    top: -3px;
+    left: -3px;
+  }
+
+  .mainContent {
+    padding: 16px;
     gap: 32px;
   }
 
-  .title {
-    font-size: 28px;
+  .mainTitle {
+    font-size: 24px;
   }
 
   .subtitle {
-    font-size: 16px;
-  }
-
-  .navContent {
-    padding: 0 16px;
-  }
-
-  .navLinks {
-    gap: 16px;
-  }
-
-  .navLink {
     font-size: 14px;
+  }
+
+  .progressContainer svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .percentage {
+    font-size: 28px;
   }
 }
 
 @media (max-width: 480px) {
-  .progressContainer svg {
-    width: 160px;
-    height: 160px;
+  .container {
+    padding-left: 10px;
   }
 
-  .progressPercentage {
-    font-size: 36px;
+  .stepsList {
+    gap: 12px;
   }
 
-  .title {
-    font-size: 24px;
+  .stepIconContainer {
+    width: 32px;
+    height: 32px;
   }
 
-  .categoryIcon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .icon {
-    font-size: 16px;
+  .iconCircle {
+    width: 32px;
+    height: 32px;
   }
 
   .spinnerRing {
-    width: 48px;
-    height: 48px;
-    top: -4px;
-    left: -4px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .stepTitle {
+    font-size: 12px;
+  }
+
+  .mainTitle {
+    font-size: 20px;
+  }
+
+  .progressContainer svg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .percentage {
+    font-size: 24px;
   }
 }

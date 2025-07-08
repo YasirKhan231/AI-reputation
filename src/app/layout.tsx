@@ -15,16 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        {/* Link Satoshi font from Fontshare */}
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+      <head>{/* Link Satoshi font from Fontshare */}</head>
       <body>
         {/* Optional: Include Header if needed */}
-        {/* <Header /> */}
+        <Header />
         {children}
       </body>
     </html>

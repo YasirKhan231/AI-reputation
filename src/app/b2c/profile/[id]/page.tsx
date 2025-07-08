@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
-import type { PersonProfile } from "../../../types/profile";
-import { fetchProfiles } from "../../../lib/profile-service";
+import type { PersonProfile } from "../../../../types/profile";
+import { fetchProfiles } from "../../../../lib/profile-service";
 import styles from "./profile-detail.module.css";
 
 export default function ProfileDetailPage() {

@@ -159,7 +159,7 @@ export default function QuestionnairePage() {
         setTimeout(() => {
           // Show results after 15 seconds total
           setShowProcessing(false);
-          router.push("/results");
+          router.push("/b2c/results");
         }, 5000);
       }, 5000);
     }, 5000);
