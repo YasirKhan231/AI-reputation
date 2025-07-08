@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import Header from "@/components/header";
-import "@/app/global.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Observr - b2b",
