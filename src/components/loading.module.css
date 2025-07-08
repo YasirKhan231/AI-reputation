@@ -1,0 +1,335 @@
+
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Navigation */
+.navbar {
+  border-bottom: 1px solid #f1f5f9;
+  padding: 16px 0;
+}
+
+.navContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+
+.logoCircle {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  border-radius: 50%;
+  position: relative;
+}
+
+.logoCircle::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.navLinks {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  font-size: 16px;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #4f46e5;
+}
+
+.profileAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profileAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Main Content */
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: 80px;
+}
+
+.categoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.categoryIcon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.icon {
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.categoryName {
+  font-size: 18px;
+  font-weight: 600;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+}
+
+/* Active state */
+.categoryItem.active .categoryIcon {
+  background-color: #4f46e5;
+  transform: scale(1.05);
+}
+
+.categoryItem.active .icon {
+  filter: brightness(0) invert(1);
+}
+
+.categoryItem.active .categoryName {
+  color: #4f46e5;
+}
+
+/* Completed state */
+.categoryItem.completed .categoryIcon {
+  background-color: #4f46e5;
+}
+
+.categoryItem.completed .icon {
+  filter: brightness(0) invert(1);
+}
+
+.categoryItem.completed .categoryName {
+  color: #1e293b;
+}
+
+/* Spinner ring */
+.spinnerRing {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 56px;
+  height: 56px;
+  border: 2px solid transparent;
+  border-top: 2px solid #4f46e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Center Content */
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+}
+
+.progressContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressRing {
+  transform: rotate(-90deg);
+}
+
+.progressRingForeground {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.progressText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progressPercentage {
+  font-size: 48px;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.textContent {
+  max-width: 600px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 400;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 40px 16px;
+  }
+
+  .sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .categoryList {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .categoryItem {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .categoryName {
+    font-size: 14px;
+  }
+
+  .centerContent {
+    order: 1;
+    gap: 32px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .navContent {
+    padding: 0 16px;
+  }
+
+  .navLinks {
+    gap: 16px;
+  }
+
+  .navLink {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressContainer svg {
+    width: 160px;
+    height: 160px;
+  }
+
+  .progressPercentage {
+    font-size: 36px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .categoryIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    font-size: 16px;
+  }
+
+  .spinnerRing {
+    width: 48px;
+    height: 48px;
+    top: -4px;
+    left: -4px;
+  }
+}

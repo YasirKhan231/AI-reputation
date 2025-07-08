@@ -39,6 +39,7 @@
   top: 100%;
   left: 0;
   right: 0;
+  min-width: 280px;
   background-color: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 6px;
@@ -51,10 +52,11 @@
 .dropdownItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 12px;
+  padding: 10px 16px;
   cursor: pointer;
   font-size: 14px;
+  background-color: #ffffff;
 }
 
 .dropdownItem:hover {
@@ -64,11 +66,13 @@
 .countryName {
   flex: 1;
   color: #374151;
+  font-weight: 500;
 }
 
 .dialCode {
   color: #6b7280;
   font-weight: 500;
+  font-size: 13px;
 }
 
 .phoneInput {

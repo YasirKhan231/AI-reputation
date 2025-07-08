@@ -32,7 +32,7 @@ const countries: Country[] = [
     maxLength: 10,
   },
   {
-    code: "GB",
+    code: "UK",
     name: "United Kingdom",
     flag: "🇬🇧",
     dialCode: "+44",

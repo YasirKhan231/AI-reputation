@@ -1,7 +1,7 @@
 "use client";
 import type { PageProps } from "@/types/business-onboarding";
 
-import PhoneInput from "./components/phone-input";
+import PhoneInput from "./ui/phone-input";
 import styles from "./page-8.module.css";
 
 const Page8 = ({ formData, updateFormData }: PageProps) => {
