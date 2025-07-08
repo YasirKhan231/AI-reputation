@@ -18,7 +18,7 @@ export default function RootLayout({
       <head>{/* Link Satoshi font from Fontshare */}</head>
       <body>
         {/* Optional: Include Header if needed */}
-        <Header />
+        {/* <Header /> */}
         {children}
       </body>
     </html>
