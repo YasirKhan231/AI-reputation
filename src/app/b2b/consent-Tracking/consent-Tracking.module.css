@@ -1,0 +1,372 @@
+.consentContainer {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.mainContent {
+  margin-left: 260px;
+  flex: 1;
+  padding: 20px 28px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.mainContent.expanded {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Page Header */
+.pageHeader {
+  margin-bottom: 40px;
+}
+
+.pageHeader h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #002f6c;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Search and Filter Section */
+.searchFilterSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  color: #333333;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #002f6c;
+}
+
+.searchInput::placeholder {
+  color: #999999;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+.filterContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filterSelect {
+  padding: 12px 44px 12px 44px;
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  appearance: none;
+  min-width: 120px;
+  color: #333333;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #002f6c;
+}
+
+.filterIconLeft {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+
+.filterIconRight {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Consent Cards */
+.consentCards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.consentCard {
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.consentCard:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cardLeft {
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #002f6c;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.cardDate {
+  font-size: 14px;
+  font-weight: 400;
+  color: #002f6c;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.cardRight {
+  flex-shrink: 0;
+}
+
+.statusPills {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pillIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.pillText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555555;
+  line-height: 10px;
+  letter-spacing: 0%;
+  white-space: nowrap;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #5a636d;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.paginationButton:hover:not(.disabled) {
+  background: #f8fafc;
+  border-color: #d1d5db;
+}
+
+.paginationButton.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paginationIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageNumber {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #5a636d;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pageNumber:hover {
+  background: #f8fafc;
+  border-color: #d1d5db;
+}
+
+.pageNumber.active {
+  background: #002f6c;
+  border-color: #002f6c;
+  color: white;
+}
+
+.ellipsis {
+  color: #5a636d;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .statusPills {
+    gap: 16px;
+  }
+
+  .pillText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .searchFilterSection {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .searchContainer {
+    max-width: none;
+  }
+
+  .consentCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .cardRight {
+    width: 100%;
+  }
+
+  .statusPills {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pageNumbers {
+    order: -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageHeader h1 {
+    font-size: 20px;
+  }
+
+  .consentCard {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 16px;
+  }
+
+  .statusPills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .statusPill {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 12px;
+  }
+
+  .consentCard {
+    padding: 16px;
+  }
+
+  .statusPills {
+    grid-template-columns: 1fr;
+  }
+
+  .pillText {
+    font-size: 12px;
+  }
+
+  .paginationButton {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .pageNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
