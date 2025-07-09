@@ -234,6 +234,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  align-items: start;
 }
 
 .profileDetailLeftColumn,
@@ -248,7 +249,9 @@
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  height: fit-content;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .profileDetailSectionTitle {
@@ -259,13 +262,14 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   font-family: "Inter", sans-serif;
+  flex-shrink: 0;
 }
 
 .profileDetailPersonalInfo {
   display: flex;
   flex-direction: column;
   gap: 0;
-  min-height: 280px;
+  flex: 1;
 }
 
 .profileDetailInfoRow {
@@ -281,23 +285,28 @@
 }
 
 .profileDetailInfoLabel {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: #6b7280;
   font-family: "Inter", sans-serif;
+  line-height: 16px;
+  letter-spacing: 0%;
 }
 
 .profileDetailInfoValue {
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 400;
   color: #1f2937;
-  font-weight: 500;
   font-family: "Inter", sans-serif;
+  line-height: 16px;
+  letter-spacing: 0%;
 }
 
 .profileDetailRelatedPeople {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-height: 280px;
+  flex: 1;
 }
 
 .profileDetailRelatedPerson {
@@ -320,10 +329,12 @@
 }
 
 .profileDetailRelatedPersonName {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   color: #1f2937;
   font-family: "Inter", sans-serif;
+  line-height: 16px;
+  letter-spacing: 0%;
 }
 
 .profileDetailRelatedPersonRelation {
@@ -344,6 +355,7 @@
   border-radius: 6px;
   font-family: "Inter", sans-serif;
   transition: all 0.2s ease;
+  margin-top: auto;
 }
 
 .profileDetailSeeMore:hover {
@@ -355,6 +367,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+  flex: 1;
 }
 
 .profileDetailMediaItem {
@@ -380,9 +393,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   color: white;
-  font-weight: bold;
+}
+
+.profileDetailMediaPlatform svg {
+  width: 14px;
+  height: 14px;
 }
 
 .profileDetailVideoContainer {
@@ -416,6 +432,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .profileDetailSentimentHeader {
@@ -530,6 +547,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .profileDetailFlaggedContent {
@@ -596,6 +614,7 @@
   border-radius: 6px;
   font-family: "Inter", sans-serif;
   transition: all 0.2s ease;
+  margin-top: auto;
 }
 
 .profileDetailMoreFlagged:hover {
@@ -607,6 +626,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .profileDetailPositiveMark {
@@ -653,6 +673,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .profileDetailEducationItem {
@@ -829,6 +850,7 @@
 
   .profileDetailSection {
     padding: 16px;
+    height: auto;
   }
 }
 

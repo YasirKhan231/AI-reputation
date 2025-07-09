@@ -1,9 +1,7 @@
-import type React from "react";
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import Header from "@/components/header";
 import "@/app/globals.css";
-
-// Import Geist font (you can install it via `npm install geist`)
 import { GeistSans } from "geist/font/sans";
 
 export const metadata: Metadata = {
@@ -11,16 +9,16 @@ export const metadata: Metadata = {
   description: "Get transparent, AI-synthesized reports from public data",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={GeistSans.className}>
-        <Header />
-        {children}
+    <html lang="en" className={GeistSans.className}>
+      <body>
+        <Header></Header>
+        <main>{children}</main>
       </body>
     </html>
   );

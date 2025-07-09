@@ -268,9 +268,22 @@
   margin: 0 auto 32px;
 }
 
+.questionnaireProcessingImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+}
+
 .questionnaireProcessingSvg {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .questionnaireProcessingCircle {
@@ -288,28 +301,6 @@
 
 .questionnaireProcessingSubtitle {
   font-size: 14px;
-  color: #6b7280;
-  line-height: 1.5;
-  font-family: "Inter", sans-serif;
-}
-
-.questionnaireResultsContainer {
-  text-align: center;
-  max-width: 600px;
-  width: 100%;
-}
-
-.questionnaireResultsTitle {
-  font-size: 32px;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 16px;
-  line-height: 1.2;
-  font-family: "Inter", sans-serif;
-}
-
-.questionnaireResultsSubtitle {
-  font-size: 16px;
   color: #6b7280;
   line-height: 1.5;
   font-family: "Inter", sans-serif;

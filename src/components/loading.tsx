@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styles from "./loading.module.css"; // Adjust the path as necessary
 
 interface ScanStep {
@@ -12,6 +13,7 @@ interface ScanStep {
 }
 
 const LoadingScreen = () => {
+  const router = useRouter();
   const totalSec = 40;
   const [progress, setProgress] = useState(0);
   const [currentStep, setCurrentStep] = useState(-1); // Start with -1 so no step is active initially
@@ -71,7 +73,16 @@ const LoadingScreen = () => {
         completed: index < currentStepIndex,
       }))
     );
-  }, [progress]);
+
+    // Redirect when progress reaches 100%
+    if (progress >= 100) {
+      const timer = setTimeout(() => {
+        router.push("/b2c/result");
+      }, 1000); // Adding a small delay before redirect for better UX
+
+      return () => clearTimeout(timer);
+    }
+  }, [progress, router]);
 
   const circumference = 2 * Math.PI * 70;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
