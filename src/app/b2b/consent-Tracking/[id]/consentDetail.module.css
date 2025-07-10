@@ -1,0 +1,279 @@
+.consentDetailContainer {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.mainContent {
+  margin-left: 260px;
+  flex: 1;
+  padding: 20px 28px;
+  transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.mainContent.expanded {
+  margin-left: 0;
+  width: 100%;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.breadcrumbLink {
+  font-size: 16px;
+  font-weight: 600;
+  color: #4880ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbLink:hover {
+  color: #3b82f6;
+}
+
+.breadcrumbSeparator {
+  font-size: 16px;
+  color: #777777;
+  margin: 0 4px;
+}
+
+.breadcrumbCurrent {
+  font-size: 16px;
+  font-weight: 500;
+  color: #777777;
+}
+
+/* Page Header */
+.pageHeader {
+  margin-bottom: 32px;
+}
+
+.pageHeader h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #002f6c;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Stat Cards */
+.statCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.statCard {
+  background: white;
+  border: 1px solid #eeeeee;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.statIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.statIcon img {
+  width: 32px;
+  height: 32px;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #5a636d;
+  margin-bottom: 8px;
+}
+
+.statValue {
+  font-size: 40px;
+  font-weight: 600;
+  color: #002f6c;
+  line-height: 1;
+}
+
+/* Filter Tabs */
+.filterTabs {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.filterTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  color: #555555;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.filterTab.active {
+  color: #000000;
+}
+
+.filterTab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #002f6c;
+}
+
+.filterCount {
+  font-size: 12px;
+  font-weight: 500;
+  color: #888888cc;
+  background: #f3f4f6;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+/* Table Cell Styles */
+.nameCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nameMain {
+  font-size: 15px;
+  font-weight: 700;
+  color: #002F6C;
+  line-height: 18px;
+}
+
+.nameRole {
+  font-size: 12px;
+  color: #555555;
+  line-height: 12px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+
+.nameEmail {
+  font-size: 14px;
+  color: #5a636d;
+  line-height: 1.2;
+}
+
+.dateCell {
+  color: #5a636d;
+}
+
+.riskTag {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.riskTag.low {
+  background: #c6ffd6;
+  color: #00691e;
+}
+
+.riskTag.moderate {
+  background: #fcf4d3;
+  color: #b45309;
+}
+
+.riskTag.high {
+  background: #ffd1bc;
+  color: #d2691e;
+}
+
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.statusBadge.consented {
+  background: #c6ffd6;
+  color: #00691e;
+}
+
+.statusBadge.pending {
+  background: #fcf4d3;
+  color: #b45309;
+}
+
+.statusBadge.declined {
+  background: #ffd1bc;
+  color: #d2691e;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .statCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .statCards {
+    grid-template-columns: 1fr;
+  }
+
+  .filterTabs {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .breadcrumb {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageHeader h1 {
+    font-size: 24px;
+  }
+
+  .statValue {
+    font-size: 32px;
+  }
+
+  .filterTab {
+    font-size: 14px;
+  }
+}

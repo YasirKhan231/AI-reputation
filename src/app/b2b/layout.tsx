@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
+import Head from "next/head"; // ✅ Use for meta/font inside nested layout
 import Header from "@/components/header";
 import "@/app/globals.css";
 
@@ -14,18 +15,16 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <head>
-        {/* ✅ Load Satoshi from Fontshare for B2B only */}
+    <div style={{ fontFamily: "Satoshi, sans-serif" }}>
+      <Head>
+        {/* ✅ Load Satoshi for B2B layout only */}
         <link
           href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
           rel="stylesheet"
         />
-      </head>
-      <body style={{ fontFamily: "Satoshi, sans-serif" }}>
-        {/* <Header /> */}
-        <main>{children}</main>
-      </body>
-    </html>
+      </Head>
+      {/* <Header /> */}
+      <main>{children}</main>
+    </div>
   );
 }

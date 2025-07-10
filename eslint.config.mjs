@@ -1,4 +1,3 @@
-// eslint.config.js
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
@@ -31,20 +30,18 @@ export default [
     },
     rules: {
       "react/react-in-jsx-scope": "off",
-      // ❌ Turn off unused variable warnings
       "@typescript-eslint/no-unused-vars": "off",
-
-      // ❌ Turn off JSX escape warnings
       "react/no-unescaped-entities": "off",
-
-      // ✅ Optional: Allow prop spreading
       "react/jsx-props-no-spreading": "off",
-
-      // ✅ Optional: Disable PropTypes (since you're using TypeScript)
       "react/prop-types": "off",
-
-      // ✅ Allow empty functions (e.g., useEffect with no-op)
       "@typescript-eslint/no-empty-function": "off",
+
+      // ✅ DISABLE Next.js warnings for <img> and <a>
+      "@next/next/no-img-element": "off",
+      "@next/next/no-html-link-for-pages": "off",
+
+      // ✅ DISABLE 'any' type restriction
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ];

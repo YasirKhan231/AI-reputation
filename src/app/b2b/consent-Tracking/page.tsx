@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Sidebar from "@/components/sidebar";
-import { consentData } from "@/data/consentdata";
+import { consentData } from "../../../data/consentdata";
 import styles from "./consent-Tracking.module.css";
 
 export default function ConsentTracking() {
@@ -46,6 +47,16 @@ export default function ConsentTracking() {
     }
 
     return pages;
+  };
+
+  // Convert title to URL slug
+  const titleToSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-")
+      .trim();
   };
 
   return (
@@ -103,57 +114,63 @@ export default function ConsentTracking() {
         {/* Consent Cards */}
         <div className={styles.consentCards}>
           {paginatedData.map((item) => (
-            <div key={item.id} className={styles.consentCard}>
-              <div className={styles.cardLeft}>
-                <h3 className={styles.cardTitle}>{item.title}</h3>
-                <p className={styles.cardDate}>{item.date}</p>
-              </div>
+            <Link
+              key={item.id}
+              href={`/b2b/consent-Tracking/${titleToSlug(item.title)}`}
+              className={styles.consentCardLink}
+            >
+              <div className={styles.consentCard}>
+                <div className={styles.cardLeft}>
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                  <p className={styles.cardDate}>{item.date}</p>
+                </div>
 
-              <div className={styles.cardRight}>
-                <div className={styles.statusPills}>
-                  <div className={styles.statusPill}>
-                    <img
-                      src="/b2b/consent-Tracking/profiles.svg"
-                      alt="Profiles"
-                      className={styles.pillIcon}
-                    />
-                    <span className={styles.pillText}>
-                      {item.profiles} Profiles
-                    </span>
-                  </div>
-                  <div className={styles.statusPill}>
-                    <img
-                      src="/b2b/consent-Tracking/consented.svg"
-                      alt="Consented"
-                      className={styles.pillIcon}
-                    />
-                    <span className={styles.pillText}>
-                      {item.consented} Consented
-                    </span>
-                  </div>
-                  <div className={styles.statusPill}>
-                    <img
-                      src="/b2b/consent-Tracking/declined.svg"
-                      alt="Declined"
-                      className={styles.pillIcon}
-                    />
-                    <span className={styles.pillText}>
-                      {item.declined} Declined
-                    </span>
-                  </div>
-                  <div className={styles.statusPill}>
-                    <img
-                      src="/b2b/consent-Tracking/in-progress.svg"
-                      alt="In Progress"
-                      className={styles.pillIcon}
-                    />
-                    <span className={styles.pillText}>
-                      {item.inProgress} In Progress
-                    </span>
+                <div className={styles.cardRight}>
+                  <div className={styles.statusPills}>
+                    <div className={styles.statusPill}>
+                      <img
+                        src="/b2b/consent-Tracking/profiles.svg"
+                        alt="Profiles"
+                        className={styles.pillIcon}
+                      />
+                      <span className={styles.pillText}>
+                        {item.profiles} Profiles
+                      </span>
+                    </div>
+                    <div className={styles.statusPill}>
+                      <img
+                        src="/b2b/consent-Tracking/consented.svg"
+                        alt="Consented"
+                        className={styles.pillIcon}
+                      />
+                      <span className={styles.pillText}>
+                        {item.consented} Consented
+                      </span>
+                    </div>
+                    <div className={styles.statusPill}>
+                      <img
+                        src="/b2b/consent-Tracking/declined.svg"
+                        alt="Declined"
+                        className={styles.pillIcon}
+                      />
+                      <span className={styles.pillText}>
+                        {item.declined} Declined
+                      </span>
+                    </div>
+                    <div className={styles.statusPill}>
+                      <img
+                        src="/b2b/consent-Tracking/in-progress.svg"
+                        alt="In Progress"
+                        className={styles.pillIcon}
+                      />
+                      <span className={styles.pillText}>
+                        {item.inProgress} In Progress
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
