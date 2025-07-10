@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search/searchbar";
-import styles from "./Sidebar.module.css";
+import styles from "./sidebar.module.css";
 
 interface SidebarProps {
   isCollapsed?: boolean;
