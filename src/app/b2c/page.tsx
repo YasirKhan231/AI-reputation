@@ -22,8 +22,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
-      <Header></Header>
       {/* Main Content */}
       <main className={styles.main}>
         {/* Left Decorative Card */}
