@@ -1,0 +1,46 @@
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  margin: 0 25px 8px 25px;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.searchContainer:hover {
+  background-color: #f9fafb;
+}
+
+.searchIcon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.searchText {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: #5a636d;
+}
+
+.shortcut {
+  display: flex;
+  gap: 2px;
+}
+
+.shortcut span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background: #f3f4f6;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+}

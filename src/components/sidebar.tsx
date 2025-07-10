@@ -1,139 +1,199 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import styles from "./sidebar.module.css";
+import { usePathname } from "next/navigation";
+import SearchBar from "./search/searchbar";
+import styles from "./Sidebar.module.css";
 
 interface SidebarProps {
-  isCollapsed: boolean;
-  onToggle: () => void;
+  isCollapsed?: boolean;
+  onToggle?: () => void;
 }
 
-export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
+export default function Sidebar({
+  isCollapsed = false,
+  onToggle,
+}: SidebarProps) {
+  const [showDropdown, setShowDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [showUserMenu, setShowUserMenu] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
-  const menuItems = [
-    { name: "Dashboard", icon: "📊", route: "/dashboard", active: true },
-    { name: "Reports", icon: "📋", route: "/b2b/reports" },
-    { name: "Consent Tracking", icon: "🔒", route: "/b2b/consent-tracking" },
-    { name: "Integrations & API", icon: "🔗", route: "/b2b/integrations-api" },
+  const navigationItems = [
+    {
+      name: "Dashboard",
+      icon: "/b2b/sidebar/dashboard.svg",
+      route: "/dashboard",
+    },
+    {
+      name: "Reports",
+      icon: "/b2b/sidebar/reports.svg",
+      route: "/b2b/reports",
+    },
+    {
+      name: "Consent Tracking",
+      icon: "/b2b/sidebar/consent.svg",
+      route: "/b2b/consent-tracking",
+    },
+    {
+      name: "Integrations & API",
+      icon: "/b2b/sidebar/api.svg",
+      route: "/b2b/integrations-api",
+    },
     {
       name: "Billing & Subscription",
-      icon: "💳",
-      route: "/b2b/billing-subscription",
+      icon: "/b2b/sidebar/pricing.svg",
+      route: "/b2b/pricing",
     },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showDropdown]);
+
+  const handleDropdownAction = (action: string) => {
+    console.log(`${action} click`);
+    setShowDropdown(false);
+  };
+
+  const handleSearchSubmit = () => {
+    console.log("Individual search:", searchQuery);
+  };
+
   if (isCollapsed) {
-    return (
-      <button className={styles.floatingToggle} onClick={onToggle}>
-        <img src="/heiumberger.svg" alt="Open Sidebar" />
-      </button>
-    );
+    return null;
   }
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.sidebarHeader}>
+      {/* Top Row */}
+      <div className={styles.topRow}>
         <div className={styles.logo}>
-          <div className={styles.logoIcon}>🔵</div>
-          <span>Observ</span>
+          <img src="/logo.svg" alt="Observr" />
         </div>
-        <div className={styles.headerIcons}>
-          <div className={styles.iconBtn}>
-            <img src="/search.svg" alt="Search" />
-          </div>
-          <button className={styles.iconBtn} onClick={onToggle}>
-            <img src="/heiumberger.svg" alt="Toggle Sidebar" />
+        <div className={styles.topActions}>
+          <Link href="/b2b/notifications" className={styles.actionButton}>
+            <img src="/b2b/sidebar/notification.svg" alt="Notifications" />
+          </Link>
+          <button className={styles.actionButton} onClick={onToggle}>
+            <img src="/b2b/sidebar/sidebar-toggle.svg" alt="Toggle Sidebar" />
           </button>
         </div>
       </div>
 
-      <div className={styles.searchSection}>
-        <div className={styles.searchContainer}>
-          <img src="/search.svg" alt="Search" className={styles.searchIcon} />
-          <input
-            type="text"
-            placeholder="Search"
-            className={styles.searchInput}
-          />
-          <span className={styles.searchShortcut}>⌘ K</span>
-        </div>
-      </div>
+      {/* Search Component */}
+      <SearchBar />
 
-      <nav className={styles.sidebarNav}>
-        {menuItems.map((item, index) => (
-          <Link
-            href={item.route}
-            key={index}
-            className={`${styles.navItem} ${item.active ? styles.active : ""}`}
-          >
-            <span className={styles.navIcon}>{item.icon}</span>
-            <span>{item.name}</span>
-          </Link>
-        ))}
+      {/* Navigation Items */}
+      <nav className={styles.navigation}>
+        {navigationItems.map((item) => {
+          const isActive = pathname === item.route;
+          return (
+            <Link
+              key={item.name}
+              href={item.route}
+              className={`${styles.navItem} ${isActive ? styles.active : ""}`}
+            >
+              <img
+                src={`${item.icon}`}
+                alt={item.name}
+                className={styles.navIcon}
+              />
+              <span className={styles.navText}>{item.name}</span>
+            </Link>
+          );
+        })}
       </nav>
 
-      <div className={styles.uploadCsvSection}>
-        <button className={styles.uploadCsvBtn}>
-          <span className={styles.uploadIcon}>📤</span>
+      {/* Upload CSV Button */}
+      <div className={styles.uploadSection}>
+        <button className={styles.uploadButton}>
+          <img
+            src="/b2b/sidebar/upload-csv.svg"
+            alt="Upload"
+            className={styles.uploadIcon}
+          />
           Upload CSV
         </button>
       </div>
 
-      <div className={styles.individualSearch}>
-        <input
-          type="text"
-          placeholder="Search individuals by Name, Email, Social etc"
-          className={styles.searchInputLarge}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <div className={styles.searchActions}>
-          <button className={styles.observBtn}>Observ ai</button>
-          <button className={styles.searchBtn}>
-            <img
-              src="/search.svg"
-              alt="Search"
-              className={styles.searchBtnIcon}
-            />
+      {/* Individual Search Card */}
+      <div className={styles.searchCard}>
+        <p className={styles.searchCardText}>
+          Search individuals by Name, Email, Social etc
+        </p>
+        <div className={styles.searchInputContainer}>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className={styles.searchInput}
+            placeholder="Enter search terms..."
+          />
+        </div>
+        <div className={styles.searchCardActions}>
+          <button className={styles.observButton}>Observ ai</button>
+          <button className={styles.searchButton} onClick={handleSearchSubmit}>
             Search
           </button>
         </div>
       </div>
 
-      <div className={styles.userSection}>
-        <div className={styles.userProfile}>
-          <div className={styles.userAvatar}>
-            <img src="/profile-analysed.svg" alt="User Avatar" />
+      {/* Profile Footer */}
+      <div className={styles.profileFooter}>
+        <div className={styles.profileContainer}>
+          <div className={styles.profileImage}>
+            <img src="/profile.svg" alt="Reona Saito" />
           </div>
-          <div className={styles.userInfo}>
-            <div className={styles.userName}>Reona Saho</div>
-            <div className={styles.userEmail}>reonasaho@gmail.com</div>
+          <div className={styles.profileInfo}>
+            <div className={styles.profileName}>Reona Saito</div>
+            <div className={styles.profileEmail}>reonasaito@gmail.com</div>
           </div>
           <button
-            className={styles.moreOptions}
-            onClick={() => setShowUserMenu(!showUserMenu)}
+            className={styles.menuButton}
+            onClick={() => setShowDropdown(!showDropdown)}
           >
-            ⋮
+            <img src="/b2b/sidebar/3dots.svg" alt="Menu" />
           </button>
         </div>
 
-        {showUserMenu && (
-          <div className={styles.userMenuPopup}>
-            <div className={styles.menuItem}>
-              <span className={styles.menuIcon}>⚙️</span>
-              <span>Settings</span>
-            </div>
-            <div className={styles.menuItem}>
-              <span className={styles.menuIcon}>❓</span>
-              <span>Help</span>
-            </div>
-            <div className={styles.menuItem}>
-              <span className={styles.menuIcon}>↩️</span>
-              <span>Sign out</span>
-            </div>
+        {/* Dropdown Menu */}
+        {showDropdown && (
+          <div className={styles.dropdown} ref={dropdownRef}>
+            <button
+              className={styles.dropdownItem}
+              onClick={() => handleDropdownAction("Setting")}
+            >
+              Settings
+            </button>
+            <button
+              className={styles.dropdownItem}
+              onClick={() => handleDropdownAction("Help")}
+            >
+              Help
+            </button>
+            <button
+              className={styles.dropdownItem}
+              onClick={() => handleDropdownAction("Sign out")}
+            >
+              Sign Out
+            </button>
           </div>
         )}
       </div>

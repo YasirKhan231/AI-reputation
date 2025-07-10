@@ -1,0 +1,382 @@
+.container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.header {
+  background-color: white;
+  border-radius: 12px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 50%;
+  position: relative;
+}
+
+.logoIcon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #6b7280;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: #3b82f6;
+}
+
+.profileAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatarImage {
+  border-radius: 50%;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leftCard {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: rotate(-5deg);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.cardPercentage {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.cardValue {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.cardSubtext {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.viewTrend {
+  font-size: 12px;
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.cardPeriod {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.chartContainer {
+  height: 60px;
+}
+
+.chart {
+  display: flex;
+  align-items: end;
+  gap: 3px;
+  height: 100%;
+}
+
+.chartBar {
+  background: linear-gradient(to top, #3b82f6, #60a5fa);
+  width: 8px;
+  border-radius: 2px;
+  min-height: 8px;
+}
+
+.hero {
+  text-align: center;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 64px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.confidenceText {
+  color: #3b82f6;
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 48px;
+  line-height: 1.6;
+}
+
+.searchSection {
+  margin-bottom: 32px;
+}
+
+.searchContainer {
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 16px 20px;
+  font-size: 16px;
+  background: transparent;
+  color: #6b7280;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.searchButtons {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+}
+
+.observrButton {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.observrButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.searchButton {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.searchButton:hover {
+  background: #2563eb;
+}
+
+.upgradeButton {
+  background: #3b82f6;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 48px;
+  transition: background-color 0.2s;
+}
+
+.upgradeButton:hover {
+  background: #2563eb;
+}
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 16px;
+}
+
+.testimonialText {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.rightCard {
+  position: absolute;
+  right: 0;
+  top: 80px;
+  transform: rotate(8deg);
+}
+
+.accuracyCard {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  width: 200px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.accuracyHeader {
+  margin-bottom: 20px;
+}
+
+.accuracyLabel {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.circularProgress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+}
+
+.progressSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.progressText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.accuracyFooter {
+  font-size: 10px;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.accuracyNote {
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .leftCard,
+  .rightCard {
+    display: none;
+  }
+
+  .heroTitle {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerContent {
+    padding: 12px 16px;
+  }
+
+  .nav {
+    gap: 20px;
+  }
+
+  .heroTitle {
+    font-size: 36px;
+  }
+
+  .heroSubtitle {
+    font-size: 16px;
+  }
+
+  .searchContainer {
+    max-width: 90%;
+  }
+}

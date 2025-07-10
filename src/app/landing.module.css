@@ -1,0 +1,54 @@
+/* app/page.module.css */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 2rem;
+  max-width: 800px;
+  width: 100%;
+  justify-content: center;
+}
+
+.choiceButton {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: 2px solid #2563eb;
+  background-color: white;
+  color: #2563eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  text-align: center;
+}
+
+.choiceButton:hover {
+  background-color: #2563eb;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .choiceButton {
+    width: 100%;
+  }
+}
