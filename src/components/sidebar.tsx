@@ -34,12 +34,12 @@ export default function Sidebar({
     {
       name: "Consent Tracking",
       icon: "/b2b/sidebar/consent.svg",
-      route: "/b2b/consent-tracking",
+      route: "/b2b/consent-Tracking",
     },
     {
       name: "Integrations & API",
       icon: "/b2b/sidebar/api.svg",
-      route: "/b2b/integrations-api",
+      route: "/b2b/integration",
     },
     {
       name: "Billing & Subscription",
