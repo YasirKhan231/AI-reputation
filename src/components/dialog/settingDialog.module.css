@@ -6,6 +6,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  backdrop-filter: blur(2px);
 }
 
 .dialogContainer {
@@ -22,21 +23,22 @@
 }
 
 .dialog {
-  background: #ffffff;
+  width: 850px;
+  height: 600px;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  width: 800px;
-  height: 550px;
-  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   display: flex;
+  overflow: hidden;
 }
 
 .sidebar {
   width: 215px;
   background: #ffffff;
-  padding: 24px 16px;
   border-right: 1px solid #e5e7eb;
-  flex-shrink: 0;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebarTitle {
@@ -45,7 +47,8 @@
   font-size: 18px;
   line-height: 18px;
   color: #002f6c;
-  margin: 0 0 24px 0;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
 }
 
 .navigation {
@@ -57,39 +60,49 @@
 .navItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border: none;
+  gap: 12px;
+  padding: 12px 8px;
   background: none;
-  border-radius: 6px;
+  border: none;
   cursor: pointer;
-  font-family: "Satoshi", sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 14px;
-  color: #5a636d;
-  text-align: left;
+  border-radius: 6px;
   transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
 }
 
 .navItem:hover {
-  background-color: #f8f9fa;
+  background-color: #f8fafc;
 }
 
 .navItem.active {
   color: #002f6c;
-  background-color: #f0f4ff;
+  font-weight: 600;
+}
+
+.navItem.active .navIcon {
+  filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(4000%) hue-rotate(220deg) brightness(95%)
+    contrast(105%);
 }
 
 .navIcon {
   width: 16px;
   height: 16px;
-  flex-shrink: 0;
+  opacity: 0.7;
+  transition: all 0.2s ease;
 }
 
-.navItem.active .navIcon {
-  filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7151%) hue-rotate(230deg) brightness(89%)
-    contrast(109%);
+.navItem span {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #5a636d;
+}
+
+.navItem.active span {
+  color: #002f6c;
+  font-weight: 600;
 }
 
 .content {
@@ -104,21 +117,21 @@
   font-size: 18px;
   line-height: 18px;
   color: #000000;
-  margin: 0 0 24px 0;
+  margin-bottom: 24px;
 }
 
 .notificationContent {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .notificationSection {
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid #f3f4f6;
 }
 
 .notificationSection:last-child {
@@ -134,21 +147,21 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 14px;
-  color: #000000;
-  margin: 0 0 4px 0;
+  color: #212636;
+  margin-bottom: 4px;
 }
 
 .notificationSubtitle {
   font-family: "Satoshi", sans-serif;
   font-weight: 400;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 16px;
   color: #6b7280;
-  margin: 0;
 }
 
 .toggleContainer {
-  flex-shrink: 0;
+  display: flex;
+  align-items: center;
   margin-left: 16px;
 }
 
@@ -172,7 +185,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #e5e7eb;
+  background-color: #d1d5db;
   transition: 0.3s;
   border-radius: 24px;
 }
@@ -180,20 +193,20 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 20px;
-  width: 20px;
-  left: 2px;
-  bottom: 2px;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
   background-color: white;
   transition: 0.3s;
   border-radius: 50%;
 }
 
-input:checked + .slider {
+.toggle input:checked + .slider {
   background-color: #3b82f6;
 }
 
-input:checked + .slider:before {
+.toggle input:checked + .slider:before {
   transform: translateX(20px);
 }
 
@@ -206,22 +219,24 @@ input:checked + .slider:before {
 
   .sidebar {
     width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
     padding: 16px;
   }
 
   .navigation {
     flex-direction: row;
     overflow-x: auto;
-    gap: 4px;
+    gap: 8px;
   }
 
   .navItem {
     flex-shrink: 0;
-    padding: 6px 10px;
-    font-size: 12px;
+    min-width: 120px;
   }
 
   .content {
-    padding: 16px 20px;
+    padding: 16px;
   }
 }
