@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search/searchbar";
 import styles from "./sidebar.module.css";
-
+import SettingsDialog from "./dialog/settingdialog";
 interface SidebarProps {
   isCollapsed?: boolean;
   onToggle?: () => void;
@@ -18,6 +18,7 @@ export default function Sidebar({
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [showSettingsDialog, setShowSettingsDialog] = useState(false);
   const pathname = usePathname();
 
   const navigationItems = [
@@ -69,6 +70,9 @@ export default function Sidebar({
 
   const handleDropdownAction = (action: string) => {
     console.log(`${action} click`);
+    if (action === "Setting") {
+      setShowSettingsDialog(true)
+    }
     setShowDropdown(false);
   };
 
@@ -197,6 +201,7 @@ export default function Sidebar({
           </div>
         )}
       </div>
+       <SettingsDialog isOpen={showSettingsDialog} onClose={() => setShowSettingsDialog(false)} />
     </div>
   );
 }

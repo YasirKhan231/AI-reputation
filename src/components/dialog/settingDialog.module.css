@@ -1,0 +1,246 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.dialogContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.dialog {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  max-width: 1100px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.sidebar {
+  width: 260px;
+  background: #ffffff;
+  padding: 32px 24px;
+  border-right: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.sidebarTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  color: #002f6c;
+  margin: 0 0 32px 0;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: #5a636d;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: #f8f9fa;
+}
+
+.navItem.active {
+  color: #002f6c;
+  background-color: #f0f4ff;
+}
+
+.navIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.navItem.active .navIcon {
+  filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7151%) hue-rotate(230deg) brightness(89%)
+    contrast(109%);
+}
+
+.content {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+.sectionTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0 0 32px 0;
+}
+
+.notificationContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.notificationSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.notificationSection:last-child {
+  border-bottom: none;
+}
+
+.notificationTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 157%;
+  color: #212636;
+  margin: 0 0 6px 0;
+}
+
+.notificationSubtitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 157%;
+  color: #555555;
+  margin: 0;
+}
+
+.toggleContainer {
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #3e7bff;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.submitButton {
+  width: 606px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #3e7bff;
+  border: none;
+  color: #ffffff;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 24px;
+}
+
+.submitButton:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    flex-direction: column;
+    max-height: 95vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .navigation {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 4px;
+  }
+
+  .navItem {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
