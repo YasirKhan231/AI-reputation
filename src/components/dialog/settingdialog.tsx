@@ -286,6 +286,7 @@ export default function SettingsDialog({
   return (
     <>
       <div className={styles.overlay} />
+      <div className={styles.sidebarOverlay} />
       <div className={styles.dialogContainer}>
         <div className={styles.dialog} ref={dialogRef}>
           <div className={styles.sidebar}>

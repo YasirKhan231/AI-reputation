@@ -8,7 +8,6 @@ export default function SearchBar() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if ((event.ctrlKey || event.metaKey) && event.key === "k") {
         event.preventDefault();
-        alert("Search button press");
       }
     };
 
@@ -16,9 +15,7 @@ export default function SearchBar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  const handleSearchClick = () => {
-    alert("Search button press");
-  };
+  const handleSearchClick = () => {};
 
   return (
     <div className={styles.searchContainer} onClick={handleSearchClick}>

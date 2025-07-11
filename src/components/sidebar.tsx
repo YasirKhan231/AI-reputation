@@ -4,8 +4,10 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search/searchbar";
-import styles from "./sidebar.module.css";
+import SearchOverlay from "./search/searchOverlay";
+import styles from "./Sidebar.module.css";
 import SettingsDialog from "./dialog/settingdialog";
+
 interface SidebarProps {
   isCollapsed?: boolean;
   onToggle?: () => void;
@@ -16,35 +18,38 @@ export default function Sidebar({
   onToggle,
 }: SidebarProps) {
   const [showDropdown, setShowDropdown] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [internalCollapsed, setInternalCollapsed] = useState(false);
+  const [showSearchOverlay, setShowSearchOverlay] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [showSettingsDialog, setShowSettingsDialog] = useState(false);
   const pathname = usePathname();
+  const [showSettingsDialog, setShowSettingsDialog] = useState(false);
+
+  // Use internal state if no external control
+  const collapsed = isCollapsed !== undefined ? isCollapsed : internalCollapsed;
+  const toggleSidebar =
+    onToggle || (() => setInternalCollapsed(!internalCollapsed));
 
   const navigationItems = [
-    {
-      name: "Dashboard",
-      icon: "/b2b/sidebar/dashboard.svg",
-      route: "/dashboard",
-    },
-    {
-      name: "Reports",
-      icon: "/b2b/sidebar/reports.svg",
-      route: "/b2b/reports",
-    },
+    { name: "Dashboard", icon: "dashboard.svg", route: "/dashboard" },
+    { name: "Reports", icon: "reports.svg", route: "/b2b/reports" },
     {
       name: "Consent Tracking",
-      icon: "/b2b/sidebar/consent.svg",
+      icon: "consent.svg",
       route: "/b2b/consent-Tracking",
     },
     {
+      name: "Individual Search",
+      icon: "individual.svg",
+      route: "/b2b/individual-search",
+    },
+    {
       name: "Integrations & API",
-      icon: "/b2b/sidebar/api.svg",
+      icon: "api.svg",
       route: "/b2b/integration-api",
     },
     {
       name: "Billing & Subscription",
-      icon: "/b2b/sidebar/pricing.svg",
+      icon: "pricing.svg",
       route: "/b2b/pricing",
     },
   ];
@@ -68,6 +73,56 @@ export default function Sidebar({
     };
   }, [showDropdown]);
 
+  // Add effect to adjust page layout
+  useEffect(() => {
+    const updatePageLayout = () => {
+      const elements = [
+        '[class*="dashboardContainer"]',
+        '[class*="reportsContainer"]',
+        '[class*="consentContainer"]',
+        '[class*="consentDetailContainer"]',
+        '[class*="integrationsContainer"]',
+        '[class*="notificationsContainer"]',
+        '[class*="pricingContainer"]',
+      ];
+
+      elements.forEach((selector) => {
+        const element = document.querySelector(selector) as HTMLElement;
+        if (element) {
+          if (collapsed) {
+            element.style.marginLeft = "20px";
+            element.style.paddingLeft = "0";
+          } else {
+            element.style.marginLeft = "0";
+            element.style.paddingLeft = "330px";
+          }
+        }
+      });
+
+      // Also update main content elements
+      const mainContentElements = document.querySelectorAll(
+        '[class*="mainContent"]'
+      );
+      mainContentElements.forEach((element) => {
+        const el = element as HTMLElement;
+        if (collapsed) {
+          el.style.marginLeft = "20px";
+          el.style.paddingLeft = "0";
+        } else {
+          el.style.marginLeft = "0";
+          el.style.paddingLeft = "0";
+        }
+      });
+    };
+
+    updatePageLayout();
+
+    // Add a small delay to ensure DOM is ready
+    const timer = setTimeout(updatePageLayout, 100);
+
+    return () => clearTimeout(timer);
+  }, [collapsed]);
+
   const handleDropdownAction = (action: string) => {
     console.log(`${action} click`);
     if (action === "Setting") {
@@ -76,135 +131,159 @@ export default function Sidebar({
     setShowDropdown(false);
   };
 
-  const handleSearchSubmit = () => {
-    console.log("Individual search:", searchQuery);
+  const handleSearchClick = () => {
+    setShowSearchOverlay(true);
   };
 
-  if (isCollapsed) {
-    return null;
+  // Render collapsed toggle button when sidebar is hidden
+  if (collapsed) {
+    return (
+      <div style={{ marginRight: "20px" }}>
+        {" "}
+        {/* Added margin container */}
+        <button className={styles.collapsedToggle} onClick={toggleSidebar}>
+          <img src="/b2b/sidebar/toggle.svg" alt="Open Sidebar" />
+        </button>
+      </div>
+    );
   }
 
   return (
-    <div className={styles.sidebar}>
-      {/* Top Row */}
-      <div className={styles.topRow}>
-        <div className={styles.logo}>
-          <img src="/logo.svg" alt="Observr" />
-        </div>
-        <div className={styles.topActions}>
-          <Link href="/b2b/notifications" className={styles.actionButton}>
-            <img src="/b2b/sidebar/notification.svg" alt="Notifications" />
-          </Link>
-          <button className={styles.actionButton} onClick={onToggle}>
-            <img src="/b2b/sidebar/sidebar-toggle.svg" alt="Toggle Sidebar" />
-          </button>
-        </div>
-      </div>
-
-      {/* Search Component */}
-      <SearchBar />
-
-      {/* Navigation Items */}
-      <nav className={styles.navigation}>
-        {navigationItems.map((item) => {
-          const isActive = pathname === item.route;
-          return (
-            <Link
-              key={item.name}
-              href={item.route}
-              className={`${styles.navItem} ${isActive ? styles.active : ""}`}
-            >
-              <img
-                src={`${item.icon}`}
-                alt={item.name}
-                className={styles.navIcon}
-              />
-              <span className={styles.navText}>{item.name}</span>
+    <>
+      <div className={styles.sidebar}>
+        {/* Top Row */}
+        <div className={styles.topRow}>
+          <div className={styles.logo}>
+            <img src="/logo.svg" alt="Observr" />
+          </div>
+          <div className={styles.topActions}>
+            <Link href="/b2b/notifications" className={styles.actionButton}>
+              <img src="/b2b/sidebar/notification.svg" alt="Notifications" />
             </Link>
-          );
-        })}
-      </nav>
-
-      {/* Upload CSV Button */}
-      <div className={styles.uploadSection}>
-        <button className={styles.uploadButton}>
-          <img
-            src="/b2b/sidebar/upload-csv.svg"
-            alt="Upload"
-            className={styles.uploadIcon}
-          />
-          Upload CSV
-        </button>
-      </div>
-
-      {/* Individual Search Card */}
-      <div className={styles.searchCard}>
-        <p className={styles.searchCardText}>
-          Search individuals by Name, Email, Social etc
-        </p>
-        <div className={styles.searchInputContainer}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={styles.searchInput}
-            placeholder="Enter search terms..."
-          />
-        </div>
-        <div className={styles.searchCardActions}>
-          <button className={styles.observButton}>Observ ai</button>
-          <button className={styles.searchButton} onClick={handleSearchSubmit}>
-            Search
-          </button>
-        </div>
-      </div>
-
-      {/* Profile Footer */}
-      <div className={styles.profileFooter}>
-        <div className={styles.profileContainer}>
-          <div className={styles.profileImage}>
-            <img src="/profile.svg" alt="Reona Saito" />
-          </div>
-          <div className={styles.profileInfo}>
-            <div className={styles.profileName}>Reona Saito</div>
-            <div className={styles.profileEmail}>reonasaito@gmail.com</div>
-          </div>
-          <button
-            className={styles.menuButton}
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <img src="/b2b/sidebar/3dots.svg" alt="Menu" />
-          </button>
-        </div>
-
-        {/* Dropdown Menu */}
-        {showDropdown && (
-          <div className={styles.dropdown} ref={dropdownRef}>
-            <button
-              className={styles.dropdownItem}
-              onClick={() => handleDropdownAction("Setting")}
-            >
-              Settings
-            </button>
-            <button
-              className={styles.dropdownItem}
-              onClick={() => handleDropdownAction("Help")}
-            >
-              Help
-            </button>
-            <button
-              className={styles.dropdownItem}
-              onClick={() => handleDropdownAction("Sign out")}
-            >
-              Sign Out
+            <button className={styles.actionButton} onClick={toggleSidebar}>
+              <img src="/b2b/sidebar/toggle.svg" alt="Toggle Sidebar" />
             </button>
           </div>
-        )}
+        </div>
+
+        {/* Search Component */}
+        <div onClick={handleSearchClick}>
+          <SearchBar />
+        </div>
+
+        {/* Scrollable Content */}
+        <div className={styles.scrollableContent}>
+          {/* Navigation Items */}
+          <nav className={styles.navigation}>
+            {navigationItems.map((item) => {
+              const isActive = pathname === item.route;
+              return (
+                <Link
+                  key={item.name}
+                  href={item.route}
+                  className={`${styles.navItem} ${
+                    isActive ? styles.active : ""
+                  }`}
+                >
+                  <img
+                    src={`/b2b/sidebar/${item.icon}`}
+                    alt={item.name}
+                    className={`${styles.navIcon} ${
+                      isActive ? styles.activeIcon : ""
+                    }`}
+                  />
+                  <span className={styles.navText}>{item.name}</span>
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Upload CSV Button */}
+          <div className={styles.uploadSection}>
+            <button className={styles.uploadButton}>
+              <img
+                src="/b2b/sidebar/upload.svg"
+                alt="Upload"
+                className={styles.uploadIcon}
+              />
+              Upload CSV
+            </button>
+          </div>
+
+          {/* Spacer to push profile to bottom */}
+          <div className={styles.spacer}></div>
+
+          {/* Profile Footer */}
+          <div className={styles.profileFooter}>
+            <div className={styles.profileContainer}>
+              <div className={styles.profileImage}>
+                <img src="/profile.svg" alt="Reona Saito" />
+              </div>
+              <div className={styles.profileInfo}>
+                <div className={styles.profileName}>Reona Saito</div>
+                <div className={styles.profileEmail}>reonasaito@gmail.com</div>
+              </div>
+              <button
+                className={styles.menuButton}
+                onClick={() => setShowDropdown(!showDropdown)}
+              >
+                <img src="/b2b/sidebar/3dots.svg" alt="Menu" />
+              </button>
+            </div>
+
+            {/* Updated Dropdown Menu */}
+            {showDropdown && (
+              <div className={styles.dropdown} ref={dropdownRef}>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleDropdownAction("Setting")}
+                >
+                  <img
+                    src="/b2b/sidebar/setting.svg"
+                    alt="Settings"
+                    className={styles.dropdownIcon}
+                  />
+                  Settings
+                </button>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleDropdownAction("Help")}
+                >
+                  <img
+                    src="/b2b/sidebar/help.svg"
+                    alt="Help"
+                    className={styles.dropdownIcon}
+                  />
+                  Help
+                </button>
+                <button
+                  className={styles.dropdownItem}
+                  onClick={() => handleDropdownAction("Sign out")}
+                >
+                  <img
+                    src="/b2b/sidebar/signout.svg"
+                    alt="Sign Out"
+                    className={styles.dropdownIcon}
+                  />
+                  Sign Out
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
+
+      {/* Search Overlay */}
+      <SearchOverlay
+        isOpen={showSearchOverlay}
+        onClose={() => setShowSearchOverlay(false)}
+      />
+
+      {/* Settings Dialog */}
       <SettingsDialog
         isOpen={showSettingsDialog}
         onClose={() => setShowSettingsDialog(false)}
       />
-    </div>
+    </>
   );
 }
