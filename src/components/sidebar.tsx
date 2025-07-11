@@ -7,7 +7,7 @@ import SearchBar from "./search/searchbar";
 import SearchOverlay from "./search/searchOverlay";
 import styles from "./Sidebar.module.css";
 import SettingsDialog from "./dialog/settingdialog";
-
+import UploadCSVDialog from "./upload-csv/uploadcsvDialog";
 interface SidebarProps {
   isCollapsed?: boolean;
   onToggle?: () => void;
@@ -23,14 +23,14 @@ export default function Sidebar({
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const [showSettingsDialog, setShowSettingsDialog] = useState(false);
-
+  const [showUploadDialog, setShowUploadDialog] = useState(false);
   // Use internal state if no external control
   const collapsed = isCollapsed !== undefined ? isCollapsed : internalCollapsed;
   const toggleSidebar =
     onToggle || (() => setInternalCollapsed(!internalCollapsed));
 
   const navigationItems = [
-    { name: "Dashboard", icon: "dashboard.svg", route: "/dashboard" },
+    { name: "Dashboard", icon: "dashboard.svg", route: "/b2b/dashboard" },
     { name: "Reports", icon: "reports.svg", route: "/b2b/reports" },
     {
       name: "Consent Tracking",
@@ -200,7 +200,10 @@ export default function Sidebar({
 
           {/* Upload CSV Button */}
           <div className={styles.uploadSection}>
-            <button className={styles.uploadButton}>
+            <button
+              className={styles.uploadButton}
+              onClick={() => setShowUploadDialog(true)}
+            >
               <img
                 src="/b2b/sidebar/upload.svg"
                 alt="Upload"
@@ -283,6 +286,10 @@ export default function Sidebar({
       <SettingsDialog
         isOpen={showSettingsDialog}
         onClose={() => setShowSettingsDialog(false)}
+      />
+      <UploadCSVDialog
+        isOpen={showUploadDialog}
+        onClose={() => setShowUploadDialog(false)}
       />
     </>
   );

@@ -1,0 +1,355 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  backdrop-filter: blur(4px);
+}
+
+.dialogContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2001;
+  padding: 20px;
+}
+
+.outerContainer {
+  width: 620px; /* Reduced from 700px */
+  height: 600px; /* Increased height to fit all steps */
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.innerContainer {
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  background: white;
+  border-radius: 12px;
+  border: 2px dashed #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease;
+}
+
+.innerContainer:hover {
+  border-color: #EEEEEE;
+}
+
+.uploadContent {
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.iconCircle {
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.uploadTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 25px;
+  color: #002f6c;
+  margin: 0;
+}
+
+.uploadDescription {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #5a636d;
+  text-align: center;
+  margin: 0;
+  max-width: 380px;
+}
+
+.uploadButton {
+  width: 180px;
+  height: 48px;
+  background: #1C3AE3;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.uploadButton:hover {
+  background: #3b6fd9;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+/* Processing Content Styles */
+.processingContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  padding: 30px;
+}
+
+.processingIcon {
+  margin-bottom: 15px;
+}
+
+.circularProgress {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.progressCircle {
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.progressIcon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+
+.processingTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #002f6c;
+  margin: 0;
+}
+
+.processingDescription {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #667085;
+  text-align: center;
+  margin: 0;
+  max-width: 380px;
+}
+
+.progressSection {
+  width: 100%;
+  margin:  0;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progressLabel {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #002f6c;
+}
+
+.progressCount {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #5a636d;
+}
+
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: #d0e5f7;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: #4880ff;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.stepsList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 20px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.stepIndicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5e7eb;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.stepIndicator.completed {
+  background: #10b981;
+  animation: checkmark 0.5s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.emptyCircle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #9ca3af;
+}
+
+.stepTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #374151;
+  flex: 1;
+  text-align: left;
+}
+
+/* Scrollbar styling */
+.stepsList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.stepsList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.stepsList::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.stepsList::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .outerContainer {
+    width: 90vw;
+    height: 80vh;
+  }
+
+  .uploadContent {
+    width: 90%;
+  }
+
+  .processingContent {
+    padding: 20px;
+  }
+
+  .processingTitle {
+    font-size: 20px;
+  }
+
+  .processingDescription {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .outerContainer {
+    height: 85vh;
+  }
+
+  .uploadTitle {
+    font-size: 20px;
+  }
+
+  .uploadDescription {
+    font-size: 14px;
+  }
+
+  .uploadButton {
+    width: 160px;
+    height: 44px;
+  }
+
+  .stepsList {
+    max-height: 180px;
+  }
+}
