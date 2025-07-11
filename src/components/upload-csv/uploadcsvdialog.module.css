@@ -243,20 +243,36 @@
 }
 
 .stepIndicator {
-  width: 18px;
-  height: 18px;
+  position: relative;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e5e7eb;
-  transition: all 0.3s ease;
+  overflow: hidden;
   flex-shrink: 0;
 }
 
 .stepIndicator.completed {
+  background: transparent;
+}
+.stepIndicator.completed::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
   background: #10b981;
-  animation: checkmark 0.5s ease;
+  border-radius: 50%;
+  animation: revealIcon 0.8s ease forwards;
+}
+@keyframes revealIcon {
+  0% {
+    clip-path: circle(50% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+  }
 }
 
 @keyframes checkmark {
@@ -270,14 +286,19 @@
     transform: scale(1);
   }
 }
-
-.emptyCircle {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #9ca3af;
+.stepIcon {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
 }
 
+.emptyCircle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e5e7eb;
+}
 .stepTitle {
   font-family: "Satoshi", sans-serif;
   font-weight: 500;
@@ -352,4 +373,20 @@
   .stepsList {
     max-height: 180px;
   }
+}
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.stepTitle {
+  transition: color 0.3s ease;
+}
+
+.stepIndicator.completed + .stepTitle {
+  color: #10b981;
+  font-weight: 600;
 }

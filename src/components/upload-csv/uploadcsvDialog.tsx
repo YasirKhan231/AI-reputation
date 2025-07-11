@@ -236,12 +236,13 @@ export default function UploadCSVDialog({
                         }`}
                       >
                         {step.completed ? (
-                          <img
-                            src="/b2b/sidebar/checkmark.svg"
-                            alt="Completed"
-                            width="12"
-                            height="12"
-                          />
+                          <>
+                            <img
+                              src="/b2b/sidebar/checkmark.svg"
+                              alt="Completed"
+                              className={styles.stepIcon}
+                            />
+                          </>
                         ) : (
                           <div className={styles.emptyCircle} />
                         )}
