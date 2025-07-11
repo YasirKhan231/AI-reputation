@@ -40,7 +40,7 @@ export default function Sidebar({
     {
       name: "Integrations & API",
       icon: "/b2b/sidebar/api.svg",
-      route: "/b2b/integration",
+      route: "/b2b/integration-api",
     },
     {
       name: "Billing & Subscription",
@@ -71,7 +71,7 @@ export default function Sidebar({
   const handleDropdownAction = (action: string) => {
     console.log(`${action} click`);
     if (action === "Setting") {
-      setShowSettingsDialog(true)
+      setShowSettingsDialog(true);
     }
     setShowDropdown(false);
   };
@@ -201,7 +201,10 @@ export default function Sidebar({
           </div>
         )}
       </div>
-       <SettingsDialog isOpen={showSettingsDialog} onClose={() => setShowSettingsDialog(false)} />
+      <SettingsDialog
+        isOpen={showSettingsDialog}
+        onClose={() => setShowSettingsDialog(false)}
+      />
     </div>
   );
 }

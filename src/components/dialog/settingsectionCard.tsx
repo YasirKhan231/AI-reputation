@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useState } from "react";
-import styles from "./settingDialog.module.css";
+import styles from "./settingsectioncard.module.css";
 
 interface Field {
   label: string;
@@ -53,8 +53,8 @@ export default function SettingSectionCard({
               className={styles.avatar}
             />
             <div className={styles.uploadIcon}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M8 0L8 16M0 8L16 8" stroke="white" strokeWidth="2" />
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 0L6 12M0 6L12 6" stroke="white" strokeWidth="1.5" />
               </svg>
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function SettingSectionCard({
           {field.label === "PHONE NUMBER" ? (
             <div className={styles.phoneContainer}>
               <div className={styles.countryFlag}>
-                <img src="/flags/us.png" alt="US" width="20" height="15" />
+                <img src="/flags/us.png" alt="US" width="16" height="12" />
                 <span>▼</span>
               </div>
               <input

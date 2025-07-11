@@ -17,20 +17,28 @@ export default function SettingsDialog({
   const [notifications, setNotifications] = useState({
     emailAlerts: true,
     highRiskAlerts: true,
-    weeklyReports: false,
-    securityUpdates: true,
+    weeklyReports: true,
+    securityUpdates: false,
     systemUpdates: false,
   });
   const dialogRef = useRef<HTMLDivElement>(null);
 
   const navigationItems = [
-    { id: "account", label: "Account Settings", icon: "/dialog/account.svg" },
-    { id: "password", label: "Change Password", icon: "/dialog/password.svg" },
-    { id: "company", label: "Company Info", icon: "/dialog/company.svg" },
+    {
+      id: "account",
+      label: "Account Settings",
+      icon: "/b2b/dialog/account.svg",
+    },
+    {
+      id: "password",
+      label: "Change Password",
+      icon: "/b2b/dialog/password.svg",
+    },
+    { id: "company", label: "Company Info", icon: "/b2b/dialog/company.svg" },
     {
       id: "notification",
       label: "Notification Settings",
-      icon: "/dialog/notification.svg",
+      icon: "/b2b/dialog/notification.svg",
     },
   ];
 
@@ -128,7 +136,7 @@ export default function SettingsDialog({
       case "account":
         return "Account Settings";
       case "password":
-        return "Change Password";
+        return "Account Settings";
       case "company":
         return "Company Info";
       case "notification":
@@ -146,7 +154,7 @@ export default function SettingsDialog({
             sectionName="Account Settings"
             fields={accountFields}
             buttonText="SAVE"
-            iconSrc="/avatar.png"
+            iconSrc="/profile.svg"
             onSubmit={handleAccountSubmit}
             showAvatar={true}
           />
@@ -175,10 +183,12 @@ export default function SettingsDialog({
         return (
           <div className={styles.notificationContent}>
             <div className={styles.notificationSection}>
-              <h3 className={styles.notificationTitle}>Email Alerts</h3>
-              <p className={styles.notificationSubtitle}>
-                Get notified about important updates via email
-              </p>
+              <div className={styles.notificationInfo}>
+                <h3 className={styles.notificationTitle}>Email Alerts</h3>
+                <p className={styles.notificationSubtitle}>
+                  Receive email notifications for important events
+                </p>
+              </div>
               <div className={styles.toggleContainer}>
                 <label className={styles.toggle}>
                   <input
@@ -192,10 +202,12 @@ export default function SettingsDialog({
             </div>
 
             <div className={styles.notificationSection}>
-              <h3 className={styles.notificationTitle}>High Risk Alerts</h3>
-              <p className={styles.notificationSubtitle}>
-                Receive immediate notifications for high-risk findings
-              </p>
+              <div className={styles.notificationInfo}>
+                <h3 className={styles.notificationTitle}>High Risk Alerts</h3>
+                <p className={styles.notificationSubtitle}>
+                  Immediate notifications for high-risk profiles
+                </p>
+              </div>
               <div className={styles.toggleContainer}>
                 <label className={styles.toggle}>
                   <input
@@ -209,10 +221,12 @@ export default function SettingsDialog({
             </div>
 
             <div className={styles.notificationSection}>
-              <h3 className={styles.notificationTitle}>Weekly Reports</h3>
-              <p className={styles.notificationSubtitle}>
-                Get weekly summary reports of your activities
-              </p>
+              <div className={styles.notificationInfo}>
+                <h3 className={styles.notificationTitle}>Weekly Reports</h3>
+                <p className={styles.notificationSubtitle}>
+                  Summary reports sent every week
+                </p>
+              </div>
               <div className={styles.toggleContainer}>
                 <label className={styles.toggle}>
                   <input
@@ -226,10 +240,12 @@ export default function SettingsDialog({
             </div>
 
             <div className={styles.notificationSection}>
-              <h3 className={styles.notificationTitle}>Security Updates</h3>
-              <p className={styles.notificationSubtitle}>
-                Stay informed about security patches and updates
-              </p>
+              <div className={styles.notificationInfo}>
+                <h3 className={styles.notificationTitle}>Security updates</h3>
+                <p className={styles.notificationSubtitle}>
+                  Important notifications about your account security.
+                </p>
+              </div>
               <div className={styles.toggleContainer}>
                 <label className={styles.toggle}>
                   <input
@@ -243,10 +259,12 @@ export default function SettingsDialog({
             </div>
 
             <div className={styles.notificationSection}>
-              <h3 className={styles.notificationTitle}>System Updates</h3>
-              <p className={styles.notificationSubtitle}>
-                Get notified about system maintenance and updates
-              </p>
+              <div className={styles.notificationInfo}>
+                <h3 className={styles.notificationTitle}>System Updates</h3>
+                <p className={styles.notificationSubtitle}>
+                  Notifications about system maintenance and updates
+                </p>
+              </div>
               <div className={styles.toggleContainer}>
                 <label className={styles.toggle}>
                   <input
@@ -258,13 +276,6 @@ export default function SettingsDialog({
                 </label>
               </div>
             </div>
-
-            <button
-              className={styles.submitButton}
-              onClick={handleNotificationSubmit}
-            >
-              SAVE PREFERENCES
-            </button>
           </div>
         );
       default:
@@ -278,7 +289,7 @@ export default function SettingsDialog({
       <div className={styles.dialogContainer}>
         <div className={styles.dialog} ref={dialogRef}>
           <div className={styles.sidebar}>
-            <h2 className={styles.sidebarTitle}>SETTINGS</h2>
+            <h2 className={styles.sidebarTitle}>Settings</h2>
             <nav className={styles.navigation}>
               {navigationItems.map((item) => (
                 <button
