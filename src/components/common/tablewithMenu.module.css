@@ -50,7 +50,7 @@
   cursor: pointer;
   font-size: 16px;
   color: #5a636d;
-  padding: 8px;
+  padding: 0px 5px 15px 10px;
   border-radius: 4px;
   transition: background 0.2s;
 }

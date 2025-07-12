@@ -171,7 +171,7 @@ export default function ConsentDetail() {
       <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
       <div
         className={`${styles.mainContent} ${
-          sidebarCollapsed ? styles.expanded : ""
+          sidebarCollapsed ? styles.collapsed : ""
         }`}
       >
         {/* Breadcrumb */}

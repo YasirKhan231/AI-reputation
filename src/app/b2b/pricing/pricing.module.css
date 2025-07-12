@@ -1,25 +1,31 @@
+/* Replace container and main content styles */
 .pricingContainer {
   display: flex;
   min-height: 100vh;
   background: #f8fafc;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .mainContent {
-  margin-left: 260px;
-  flex: 1;
-  padding: 20px 28px;
-  
+  width: calc(100% - 330px); /* Full width minus sidebar */
+  margin-left: 330px; /* Matches sidebar width */
+  padding: 45px 28px;
+  transition: all 0.3s ease; /* Smooth transition */
+  background: #f8fafc;
 }
 
-.mainContent.expanded {
-  margin-left: 0;
-  width: 100%;
+.mainContent.collapsed {
+  width: calc(100% - 80px); /* Matches collapsed sidebar */
+  margin-left: 80px;
 }
+
 
 .pageContent {
   max-width: 1024px;
-  margin: 0 auto;
+  margin: 0 0 30px 30px ;
   padding: 20px 30px;
+  transition: all 0.3s ease;
 }
 
 /* Page Title */
@@ -331,5 +337,29 @@
   .planButton {
     padding: 10px 20px;
     font-size: 13px;
+  }
+}
+
+/* Update responsive styles */
+@media (max-width: 768px) {
+  .mainContent {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
+  
+  .mainContent.collapsed {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .plansGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .planCard {
+    width: 100%;
+    max-width: 265px;
+    margin: 0 auto;
   }
 }
