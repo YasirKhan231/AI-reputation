@@ -12,7 +12,10 @@ export default function HomePage() {
     <div className={styles.container}>
       <h1 className={styles.question}>Where do you want to go?</h1>
       <div className={styles.buttonGroup}>
-        <button className={styles.button} onClick={() => router.push("/b2c")}>
+        <button
+          className={styles.button}
+          onClick={() => router.push("/b2c7dashboard")}
+        >
           Individual
         </button>
         <button className={styles.button} onClick={() => router.push("/b2b")}>
