@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SearchBar from "./search/searchbar";
 import SearchOverlay from "./search/searchOverlay";
-import styles from "./Sidebar.module.css";
+import styles from "./sidebar.module.css";
 import SettingsDialog from "./dialog/settingdialog";
 import UploadCSVDialog from "./upload-csv/uploadcsvDialog";
 interface SidebarProps {

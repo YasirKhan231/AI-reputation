@@ -44,6 +44,7 @@ export default function Pricing() {
       isCurrent: false,
       buttonText: "Change Plan",
       buttonType: "change" as const,
+      customPrice: true,
     },
   ];
 
@@ -91,48 +92,65 @@ export default function Pricing() {
         <div className={styles.pageContent}>
           <h1 className={styles.pageTitle}>Billing & Subscription</h1>
 
-          {/* Plans Section */}
-          <div className={styles.plansSection}>
-            <div className={styles.plansLabel}>PLANS</div>
-            <div className={styles.plansGrid}>
+          {/* Main Container */}
+          <div className={styles.mainContainer}>
+            {/* Left Column - Features */}
+            <div className={styles.leftColumn}>
+              <div className={styles.plansLabel}>PLANS</div>
+              <div className={styles.featuresList}>
+                {featureComparison.map((row, index) => (
+                  <div key={index} className={styles.featureItem}>
+                    {row.feature}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Vertical Divider */}
+            <div className={styles.verticalDivider}></div>
+
+            {/* Right Columns - Plans */}
+            <div className={styles.plansContainer}>
               {pricingPlans.map((plan) => (
-                <div key={plan.id} className={styles.planCard}>
-                  <div className={styles.planIcon}>
-                    <img
-                      src={plan.icon || "/placeholder.svg"}
-                      alt={plan.name}
-                    />
+                <div key={plan.id} className={styles.planColumn}>
+                  <div className={styles.planHeader}>
+                    <div className={styles.planIcon}>
+                      <img
+                        src={plan.icon || "/placeholder.svg"}
+                        alt={plan.name}
+                      />
+                    </div>
+                    <div className={styles.planName}>{plan.name}</div>
+                    <div className={styles.planSubtitle}>{plan.subtitle}</div>
+                    <div
+                      className={`${styles.planPrice} ${
+                        plan.customPrice ? styles.customPrice : ""
+                      }`}
+                    >
+                      <span className={styles.planPrice}>{plan.price}</span>
+                      {plan.term && (
+                        <span className={styles.planTerm}>{plan.term}</span>
+                      )}
+                    </div>
+                    <button
+                      className={`${styles.planButton} ${
+                        styles[plan.buttonType]
+                      }`}
+                    >
+                      {plan.buttonText}
+                    </button>
                   </div>
-                  <div className={styles.planName}>{plan.name}</div>
-                  <div className={styles.planSubtitle}>{plan.subtitle}</div>
-                  <div className={styles.planPricing}>
-                    <span className={styles.planPrice}>{plan.price}</span>
-                    {plan.term && (
-                      <span className={styles.planTerm}>{plan.term}</span>
-                    )}
+
+                  <div className={styles.planFeatures}>
+                    {featureComparison.map((row, index) => (
+                      <div key={index} className={styles.planFeatureValue}>
+                        {row[plan.id as keyof typeof row]}
+                      </div>
+                    ))}
                   </div>
-                  <button
-                    className={`${styles.planButton} ${
-                      styles[plan.buttonType]
-                    }`}
-                  >
-                    {plan.buttonText}
-                  </button>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Feature Comparison */}
-          <div className={styles.featureComparison}>
-            {featureComparison.map((row, index) => (
-              <div key={index} className={styles.featureRow}>
-                <div className={styles.featureLabel}>{row.feature}</div>
-                <div className={styles.featureValue}>{row.growth}</div>
-                <div className={styles.featureValue}>{row.scale}</div>
-                <div className={styles.featureValue}>{row.enterprise}</div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
