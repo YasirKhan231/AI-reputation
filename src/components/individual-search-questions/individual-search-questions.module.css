@@ -1,0 +1,408 @@
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px;
+  position: relative;
+}
+
+.backButton {
+  position: absolute;
+  left: 20px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.backButton:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.progressBar {
+  width: 100%;
+  height: 4px;
+  background-color: #e0e0e0;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #2693f1;
+  transition: width 0.3s ease;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mainHeading {
+  font-family: Satoshi, sans-serif;
+  font-weight: 700;
+  font-size: 29px;
+  line-height: 45px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 25px;
+  max-width: 600px;
+}
+
+/* Step 1 Styles */
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 550px;
+  margin-bottom: 45px;
+}
+
+.optionButton {
+  width: 70%;
+  height: 42px;
+  margin-left:45px;
+  border-radius: 30px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.12);
+  font-family: Satoshi, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #555555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.optionButton:hover {
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.optionButton.selected {
+  background-color: #2693f1;
+  color: #ffffff;
+}
+
+/* Step 2 Styles */
+.inputsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 438px;
+  margin-bottom: 80px;
+}
+
+.inputGroup {
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  padding: 0 15px;
+  gap: 12px;
+}
+
+.inputIcon {
+ border-radius: 1%;
+}
+
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: Satoshi, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  background: transparent;
+}
+
+.input::placeholder {
+  color: #999999;
+}
+
+/* Step 3 Styles */
+.description {
+  font-family: Satoshi, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #666666;
+  margin-bottom: 60px;
+  max-width: 500px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 80px;
+}
+
+.inputGroupForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-family: Satoshi, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #666666;
+}
+
+.inputForm {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  padding: 0 15px;
+  font-family: Satoshi, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #333333;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.inputForm:focus {
+  border-color: #2693f1;
+}
+
+.inputForm::placeholder {
+  color: #999999;
+}
+
+/* Step 4 Styles */
+.profileIcon {
+  margin-bottom: 40px;
+}
+
+.iconCircle {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.userIcon {
+  width: 60px;
+  height: 60px;
+  background-color: #2693f1;
+  border-radius: 50%;
+  position: relative;
+}
+
+.userIcon::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.userIcon::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 20px;
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+}
+
+.progressSection {
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progressLabel {
+  font-family: Satoshi, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333333;
+}
+
+.progressCount {
+  font-family: Satoshi, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #666666;
+}
+
+.progressBarContainer {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: #2693f1;
+  transition: width 0.3s ease;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 60px;
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.stepIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.stepIcon.completed {
+  background-color: #22c55e;
+  border-color: #22c55e;
+}
+
+.stepText {
+  font-family: Satoshi, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #666666;
+}
+
+.stepText.completedText {
+  color: #212636;
+}
+
+/* Common Button Styles */
+.continueButton {
+  width: 350px;
+  height: 50px;
+  background-color: #4285f4;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: Satoshi, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right:30px;
+  transition: background-color 0.2s ease;
+}
+
+.continueButton:hover:not(:disabled) {
+  background-color: #3367d6;
+}
+
+.continueButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Debug Info */
+.debugInfo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: monospace;
+  z-index: 1000;
+}
+
+.debugInfo p {
+  margin: 2px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .mainHeading {
+    font-size: 32px;
+    line-height: 44px;
+  }
+
+  .optionsContainer {
+    max-width: 100%;
+  }
+
+  .inputsContainer {
+    max-width: 100%;
+  }
+
+  .formContainer {
+    max-width: 100%;
+  }
+
+  .continueButton {
+    width: 100%;
+    max-width: 350px;
+  }
+}
