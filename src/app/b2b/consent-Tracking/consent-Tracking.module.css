@@ -1,20 +1,25 @@
+/* Replace the existing .consentContainer and .mainContent styles with these: */
 .consentContainer {
   display: flex;
   min-height: 100vh;
   background: #f8fafc;
-  margin-right: 35px;
+  position: relative;
+   overflow-x: hidden;
 }
 
 .mainContent {
-  flex: 1;
-  padding: 20px 28px;
-  
+  width: calc(100% - 330px); /* Full width minus sidebar */
+  margin-left: 330px; /* Matches sidebar width */
+  padding: 45px 28px;
+  transition: all 0.3s ease; /* Animate both width and margin */
+  background: #f8fafc;
 }
 
-.mainContent.expanded {
-  margin-left: 40px;
-  width: 100%;
+.mainContent.collapsed {
+  width: calc(100% - 80px);
+  margin-left: 80px; /* Matches collapsed sidebar width */
 }
+
 
 /* Page Header */
 .pageHeader {
@@ -122,6 +127,7 @@
   flex-direction: column;
   gap: 16px;
   margin-bottom: 32px;
+  width: 100%;
 }
 
 .consentCard {
@@ -367,5 +373,19 @@
     width: 28px;
     height: 28px;
     font-size: 12px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainContent {
+    width: 100%;
+    margin-left: 0;
+    padding: 20px;
+  }
+  
+  .mainContent.collapsed {
+    width: 100%;
+    margin-left: 0;
   }
 }
