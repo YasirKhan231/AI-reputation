@@ -4,6 +4,7 @@
   background: #f8fafc;
   display: flex;
   flex-direction: column;
+
   position: fixed;
   left: 0;
   top: 0;
@@ -162,6 +163,7 @@
 .navText {
   font-size: 16px;
   font-weight: 500;
+  line-height: 17px;
   color: #5a636d;
   transition: all 0.2s ease;
   white-space: nowrap;

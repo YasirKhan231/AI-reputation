@@ -2,17 +2,17 @@
   display: flex;
   min-height: 100vh;
   background: #f8fafc;
+  margin-right: 35px;
 }
 
 .mainContent {
-  margin-left: 260px;
   flex: 1;
   padding: 20px 28px;
   transition: margin-left 0.3s ease, width 0.3s ease;
 }
 
 .mainContent.expanded {
-  margin-left: 0;
+  margin-left: 40px;
   width: 100%;
 }
 
@@ -278,7 +278,6 @@
 
 @media (max-width: 768px) {
   .mainContent {
-    margin-left: 0;
     padding: 16px;
   }
 
