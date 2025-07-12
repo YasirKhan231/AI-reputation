@@ -70,7 +70,7 @@ export default function IntegrationsAPI() {
       <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} />
       <div
         className={`${styles.mainContent} ${
-          sidebarCollapsed ? styles.expanded : ""
+          sidebarCollapsed ? styles.collapsed : ""
         }`}
       >
         <div className={styles.pageHeader}>

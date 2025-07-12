@@ -3,20 +3,23 @@
   min-height: 100vh;
   background: #f8fafc;
   position: relative;
+  transition: margin-left 0.3s ease;
 }
-
+.integrationsContainer.collapsed {
+  margin-left: 80px; /* Or whatever value you want when collapsed */
+}
 .mainContent {
-  margin-left: 260px;
+ margin-left: 330px;
   flex: 1;
-  padding: 20px 28px;
-  transition: margin-left 0.3s ease, width 0.3s ease;
+  padding: 45px 28px;
+  transition: margin-left 0.3s ease;
+  margin-right: 30px;
+  
 }
 
-.mainContent.expanded {
-  margin-left: 0;
-  width: 100%;
+.mainContent.collapsed {
+  margin-left: 80px; /* Collapsed sidebar width */
 }
-
 /* Page Header */
 .pageHeader {
   margin-bottom: 40px;

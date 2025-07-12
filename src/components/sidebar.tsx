@@ -74,54 +74,6 @@ export default function Sidebar({
   }, [showDropdown]);
 
   // Add effect to adjust page layout
-  useEffect(() => {
-    const updatePageLayout = () => {
-      const elements = [
-        '[class*="dashboardContainer"]',
-        '[class*="reportsContainer"]',
-        '[class*="consentContainer"]',
-        '[class*="consentDetailContainer"]',
-        '[class*="integrationsContainer"]',
-        '[class*="notificationsContainer"]',
-        '[class*="pricingContainer"]',
-      ];
-
-      elements.forEach((selector) => {
-        const element = document.querySelector(selector) as HTMLElement;
-        if (element) {
-          if (collapsed) {
-            element.style.marginLeft = "20px";
-            element.style.paddingLeft = "0";
-          } else {
-            element.style.marginLeft = "0";
-            element.style.paddingLeft = "330px";
-          }
-        }
-      });
-
-      // Also update main content elements
-      const mainContentElements = document.querySelectorAll(
-        '[class*="mainContent"]'
-      );
-      mainContentElements.forEach((element) => {
-        const el = element as HTMLElement;
-        if (collapsed) {
-          el.style.marginLeft = "20px";
-          el.style.paddingLeft = "0";
-        } else {
-          el.style.marginLeft = "0";
-          el.style.paddingLeft = "0";
-        }
-      });
-    };
-
-    updatePageLayout();
-
-    // Add a small delay to ensure DOM is ready
-    const timer = setTimeout(updatePageLayout, 100);
-
-    return () => clearTimeout(timer);
-  }, [collapsed]);
 
   const handleDropdownAction = (action: string) => {
     console.log(`${action} click`);
@@ -150,7 +102,7 @@ export default function Sidebar({
 
   return (
     <>
-      <div className={styles.sidebar}>
+      <div className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
         {/* Top Row */}
         <div className={styles.topRow}>
           <div className={styles.logo}>
