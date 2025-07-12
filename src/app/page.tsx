@@ -1,37 +1,24 @@
-// app/page.tsx
+// /app/page.tsx or /app/choose/page.tsx
+
 "use client";
 
-import { useRouter } from "next/navigation";
-import Header from "@/components/header";
 import styles from "./landing.module.css";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function HomePage() {
   const router = useRouter();
-
-  const handleIndividualClick = () => {
-    router.push("/b2c");
-  };
-
-  const handleBusinessClick = () => {
-    router.push("/b2b/dashboard");
-  };
 
   return (
     <div className={styles.container}>
-      <Header />
-      <main className={styles.main}>
-        <div className={styles.buttonContainer}>
-          <button
-            className={styles.choiceButton}
-            onClick={handleIndividualClick}
-          >
-            Individual
-          </button>
-          <button className={styles.choiceButton} onClick={handleBusinessClick}>
-            Business
-          </button>
-        </div>
-      </main>
+      <h1 className={styles.question}>Where do you want to go?</h1>
+      <div className={styles.buttonGroup}>
+        <button className={styles.button} onClick={() => router.push("/b2c")}>
+          Individual
+        </button>
+        <button className={styles.button} onClick={() => router.push("/b2b")}>
+          Business
+        </button>
+      </div>
     </div>
   );
 }
