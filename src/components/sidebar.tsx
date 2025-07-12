@@ -8,6 +8,7 @@ import SearchOverlay from "./search/searchOverlay";
 import styles from "./sidebar.module.css";
 import SettingsDialog from "./dialog/settingdialog";
 import UploadCSVDialog from "./upload-csv/uploadcsvDialog";
+
 interface SidebarProps {
   isCollapsed?: boolean;
   onToggle?: () => void;
@@ -24,10 +25,27 @@ export default function Sidebar({
   const pathname = usePathname();
   const [showSettingsDialog, setShowSettingsDialog] = useState(false);
   const [showUploadDialog, setShowUploadDialog] = useState(false);
+
   // Use internal state if no external control
   const collapsed = isCollapsed !== undefined ? isCollapsed : internalCollapsed;
   const toggleSidebar =
     onToggle || (() => setInternalCollapsed(!internalCollapsed));
+
+  // Add keyboard shortcut effect
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check for Ctrl+K (Windows/Linux) or Cmd+K (Mac)
+      if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+        event.preventDefault();
+        setShowSearchOverlay(true);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   const navigationItems = [
     { name: "Dashboard", icon: "dashboard.svg", route: "/b2b/dashboard" },
@@ -72,8 +90,6 @@ export default function Sidebar({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showDropdown]);
-
-  // Add effect to adjust page layout
 
   const handleDropdownAction = (action: string) => {
     console.log(`${action} click`);

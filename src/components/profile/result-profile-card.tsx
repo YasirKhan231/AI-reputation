@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import type { PersonProfile } from "../types/profile";
+import type { PersonProfile } from "../../types/profile";
 import styles from "./result-profile-card.module.css";
 
 interface ResultsProfileCardProps {

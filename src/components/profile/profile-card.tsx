@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import type { PersonProfile } from "../types/profile";
+import type { PersonProfile } from "../../types/profile";
 import styles from "./profile-card.module.css";
 
 interface ProfileCardProps {

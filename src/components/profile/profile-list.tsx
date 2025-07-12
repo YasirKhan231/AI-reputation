@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ProfileCard from "./profile-card";
-import type { PersonProfile } from "../types/profile";
+import type { PersonProfile } from "../../types/profile";
 import styles from "./profile-list.module.css";
 
 interface ProfileListProps {

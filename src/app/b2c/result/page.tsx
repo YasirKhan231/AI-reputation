@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import ResultsProfileCard from "@/components/result-profile-card";
+import ResultsProfileCard from "@/components/profile/result-profile-card";
 import type { PersonProfile } from "../../../types/profile";
 import { fetchProfiles } from "../../../lib/profile-service";
 import styles from "./results.module.css";

@@ -4,7 +4,7 @@ import type React from "react";
 
 import { useState } from "react";
 import Sidebar from "@/components/sidebar";
-import ProfileHeader from "@/components/profileHeader";
+import ProfileHeader from "@/components/profile/profileHeader";
 import { reportData } from "@/data/reportData"; // Assuming you have a reportData file with the necessary data
 import styles from "./reports.module.css";
 
