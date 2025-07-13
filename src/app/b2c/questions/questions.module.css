@@ -8,13 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 20px 60px;
+  padding: 85px 20px 60px;
   min-height: calc(100vh - 180px);
 }
 
 .questionnaireQuestionContainer {
   text-align: center;
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
 }
 
@@ -344,4 +344,90 @@
   .questionnaireMain {
     min-height: calc(100vh - 100px);
   }
+}
+
+.questionnaireIconOptionsContainer {
+  width: 100%;
+  max-width: 1200px; 
+}
+
+.questionnaireIconOptionsGroup {
+  display: flex; /* Changed from grid to flex */
+  flex-wrap: wrap; /* Allow items to wrap if needed */
+  justify-content: center; /* Center items horizontally */
+  gap: 16px; /* Increased gap between items */
+  margin-bottom: 32px; /* More space below options */
+}
+
+@media (max-width: 480px) {
+  .questionnaireIconOptionsGroup {
+    grid-template-columns: 1fr;
+  }
+}
+
+.questionnaireIconOptionLabel {
+  cursor: pointer;
+  flex: 1; /* Allow items to grow */
+  min-width: 120px; /* Minimum width for each option */
+  max-width: 160px; /* Maximum width for each option */
+}
+
+.questionnaireIconOptionInput {
+  display: none;
+}
+
+.questionnaireIconOptionCard {
+  background: white;
+  border: 2px solid #e5e7eb;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px; /* Larger rounded corners */
+  padding: 20px 16px; /* More internal spacing */
+  gap: 12px; /* More space between icon and text */
+  height: 100%; /* Ensure consistent height */
+  box-sizing: border-box; /* Include padding in width calculation */
+
+}
+
+.questionnaireIconOptionInput:checked + .questionnaireIconOptionCard {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.questionnaireIconOptionCard:hover {
+  border-color: #3b82f6;
+   transform: translateY(-2px);
+}
+
+.questionnaireIconOptionIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.questionnaireIconOptionInput:checked + .questionnaireIconOptionCard .questionnaireIconOptionIcon {
+  background: #dbeafe;
+}
+
+.questionnaireIconOptionText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+}
+
+.questionnaireIconOptionsButtonGroup {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
 }

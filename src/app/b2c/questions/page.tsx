@@ -7,6 +7,7 @@ import LoadingScreen from "@/components/loading";
 import styles from "./questions.module.css";
 
 interface QuestionnaireData {
+  reason: string;
   location: string;
   age: string;
   gender: string;
@@ -18,6 +19,42 @@ interface QuestionnaireData {
 }
 
 const questionGroups = [
+  // Group 0: Reason for background check
+  [
+    {
+      id: "reason",
+      title: "What is the reason for requesting this background check?",
+      subtitle: "Select the most relevant option",
+      type: "icon-options",
+      options: [
+        {
+          value: "Childcare & Caregiving",
+          icon: "/questions/happy.svg",
+          label: "Childcare & Caregiving",
+        },
+        {
+          value: "Housing",
+          icon: "/questions/home.svg",
+          label: "Housing",
+        },
+        {
+          value: "Dating",
+          icon: "/questions/heart.svg",
+          label: "Dating",
+        },
+        {
+          value: "Community & volunteering",
+          icon: "/questions/globe.svg",
+          label: "Community & volunteering",
+        },
+        {
+          value: "Other",
+          icon: "/questions/other.svg",
+          label: "Other",
+        },
+      ],
+    },
+  ],
   // Group 1: Basic Info (location, age, gender)
   [
     {
@@ -127,6 +164,7 @@ export default function QuestionnairePage() {
   const [currentGroup, setCurrentGroup] = useState(0);
   const [currentQuestionInGroup, setCurrentQuestionInGroup] = useState(0);
   const [formData, setFormData] = useState<QuestionnaireData>({
+    reason: "",
     location: "",
     age: "",
     gender: "",
@@ -183,15 +221,19 @@ export default function QuestionnairePage() {
     if (isLastQuestionInGroup) {
       // Check which processing step to show based on current group
       if (currentGroup === 0) {
+        // After reason selection - move to next group without processing
+        setCurrentGroup(currentGroup + 1);
+        setCurrentQuestionInGroup(0);
+      } else if (currentGroup === 1) {
         // After first 3 questions (location, age, gender) - show "Verifying Identity Match"
         startProcessing(0);
-      } else if (currentGroup === 1) {
+      } else if (currentGroup === 2) {
         // After middle initial and aliases - show "Looking Up Public Profiles"
         startProcessing(1);
-      } else if (currentGroup === 2) {
+      } else if (currentGroup === 3) {
         // After social links and company - show "Understanding Online Presence"
         startProcessing(2);
-      } else if (currentGroup === 3) {
+      } else if (currentGroup === 4) {
         // After education (final question) - show final loading
         console.log("Final form data:", formData);
         setShowFinalLoading(true);
@@ -301,7 +343,9 @@ export default function QuestionnairePage() {
                 <div className={styles.questionnaireInputWithButtons}>
                   <input
                     type="text"
-                    placeholder={currentQ.placeholder}
+                    placeholder={
+                      "placeholder" in currentQ ? currentQ.placeholder : ""
+                    }
                     value={formData[currentQ.id as keyof QuestionnaireData]}
                     onChange={(e) =>
                       handleInputChange(
@@ -341,13 +385,13 @@ export default function QuestionnairePage() {
                   {"options" in currentQ &&
                     currentQ.options?.map((option) => (
                       <label
-                        key={option}
+                        key={typeof option === "string" ? option : option.value}
                         className={styles.questionnaireRadioLabel}
                       >
                         <input
                           type="radio"
                           name="gender"
-                          value={option}
+                          value={typeof option === "string" ? option : ""}
                           checked={formData.gender === option}
                           onChange={(e) =>
                             handleInputChange("gender", e.target.value)
@@ -359,7 +403,7 @@ export default function QuestionnairePage() {
                             {option === "Male" ? "♂" : "♀"}
                           </div>
                           <span className={styles.questionnaireRadioText}>
-                            {option}
+                            {typeof option === "string" ? option : ""}
                           </span>
                         </div>
                       </label>
@@ -405,7 +449,9 @@ export default function QuestionnairePage() {
                       }
                       className={styles.questionnaireSelect}
                     >
-                      <option value="">{currentQ.placeholder}</option>
+                      <option value="">
+                        {"placeholder" in currentQ ? currentQ.placeholder : ""}
+                      </option>
                       {Array.isArray((currentQ as any).options) &&
                         (currentQ as any).options.map((option: string) => (
                           <option key={option} value={option}>
@@ -428,6 +474,64 @@ export default function QuestionnairePage() {
                       I don't know
                     </button>
                   </div>
+                </div>
+                <button
+                  onClick={handleSkip}
+                  className={styles.questionnaireSkipButton}
+                >
+                  SKIP
+                </button>
+              </div>
+            )}
+
+            {currentQ.type === "icon-options" && (
+              <div className={styles.questionnaireIconOptionsContainer}>
+                <div className={styles.questionnaireIconOptionsGroup}>
+                  {"options" in currentQ &&
+                    (currentQ as any).options?.map((option: any) => (
+                      <label
+                        key={option.value}
+                        className={styles.questionnaireIconOptionLabel}
+                      >
+                        <input
+                          type="radio"
+                          name="reason"
+                          value={option.value}
+                          checked={formData.reason === option.value}
+                          onChange={(e) =>
+                            handleInputChange("reason", e.target.value)
+                          }
+                          className={styles.questionnaireIconOptionInput}
+                        />
+                        <div className={styles.questionnaireIconOptionCard}>
+                          <div className={styles.questionnaireIconOptionIcon}>
+                            <Image
+                              src={option.icon}
+                              alt={option.label}
+                              width={24}
+                              height={24}
+                            />
+                          </div>
+                          <span className={styles.questionnaireIconOptionText}>
+                            {option.label}
+                          </span>
+                        </div>
+                      </label>
+                    ))}
+                </div>
+                <div className={styles.questionnaireIconOptionsButtonGroup}>
+                  <button
+                    onClick={handleSubmit}
+                    className={styles.questionnaireSubmitButton}
+                  >
+                    Submit
+                  </button>
+                  <button
+                    onClick={handleIDontKnow}
+                    className={styles.questionnaireIDontKnowButton}
+                  >
+                    I don't know
+                  </button>
                 </div>
                 <button
                   onClick={handleSkip}
