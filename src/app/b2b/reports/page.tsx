@@ -113,15 +113,27 @@ export default function Reports() {
           </div>
 
           <div className={styles.filterContainer}>
-            <select
-              className={styles.filterSelect}
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value)}
-            >
-              <option value="All Reports">All Reports</option>
-              <option value="Completed">Completed</option>
-              <option value="In Progress">In Progress</option>
-            </select>
+            <div className={styles.filterWrapper}>
+              <img
+                src="/b2b/reports/filter-lines.svg"
+                alt="Filter"
+                className={styles.filterIcon}
+              />
+              <select
+                className={styles.filterSelect}
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+              >
+                <option value="All Reports">All Reports</option>
+                <option value="Completed">Completed</option>
+                <option value="In Progress">In Progress</option>
+              </select>
+              <img
+                src="/b2b/reports/dropdown.svg"
+                alt="Dropdown"
+                className={styles.dropdownIcon}
+              />
+            </div>
           </div>
         </div>
 

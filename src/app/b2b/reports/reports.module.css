@@ -47,7 +47,7 @@
   border-radius: 12px;
   padding: 24px;
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 16px;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .cardIcon img {
-  width: 24px;
-  height: 24px;
+  width: 50px;
+  height: 50px;
 }
 
 .cardContent {
@@ -79,7 +79,7 @@
 .cardValue {
   font-size: 32px;
   font-weight: 700;
-  color: #002f6c;
+  color: #002F6C;
   line-height: 1;
 }
 
@@ -416,7 +416,7 @@
 .summaryCard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   padding: 16px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
@@ -425,9 +425,10 @@
 }
 
 .cardIcon img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 12px;
+  margin-left:10px;
 }
 
 .cardContent {
@@ -438,12 +439,53 @@
 
 .cardTitle {
   font-size: 16px;
-  font-weight: 600;
-  color: #333;
+  font-weight: 500;
+  color: #5A636D;
 }
 
 .cardValue {
-  font-size: 20px;
+  font-size: 41px;
   font-weight: bold;
-  color: #111;
+  color: #002F6C;
+  margin-right:25px;
+}
+.filterContainer {
+  position: relative;
+  width: fit-content;
+}
+
+.filterWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filterIcon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  z-index: 1;
+}
+
+.filterSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px 32px 8px 40px; /* Left padding for icon */
+  border: 1px solid #EEEEEE;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  width: 180px; /* Adjust as needed */
+}
+
+.dropdownIcon {
+  position: absolute;
+  right: 12px;
+  width: 12px;
+  height: 12px;
+  pointer-events: none; /* Makes the icon non-interactive */
 }

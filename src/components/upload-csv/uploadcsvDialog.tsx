@@ -24,7 +24,7 @@ export default function UploadCSVDialog({
   const [totalFiles, setTotalFiles] = useState(95);
   const [processedFiles, setProcessedFiles] = useState(0);
   const [processingSteps, setProcessingSteps] = useState<ProcessingStep[]>([
-    { id: "1", title: "CSV file parsed successfully", completed: false },
+    { id: "1", title: "CSV file parsed successfully", completed: true },
     { id: "2", title: "Profile data extracted", completed: false },
     { id: "3", title: "Data validation completed", completed: false },
     { id: "4", title: "Analyzing social media presence", completed: false },
@@ -98,15 +98,20 @@ export default function UploadCSVDialog({
     setProgress(0);
     setProcessedFiles(0);
 
-    // Reset all steps to incomplete
-    setProcessingSteps((prev) =>
-      prev.map((step) => ({ ...step, completed: false }))
-    );
+    // Set initial state with first step completed
+    setProcessingSteps([
+      { id: "1", title: "CSV file parsed successfully", completed: true },
+      { id: "2", title: "Profile data extracted", completed: false },
+      { id: "3", title: "Data validation completed", completed: false },
+      { id: "4", title: "Analyzing social media presence", completed: false },
+      { id: "5", title: "Generating risk assessments", completed: false },
+      { id: "6", title: "Compiling final reports", completed: false },
+    ]);
 
-    // Simulate processing for 60 seconds
+    // Simulate processing
     const startTime = Date.now();
-    const duration = 80000; // 60 seconds
-    let currentStep = 0;
+    const duration = 80000; // 80 seconds
+    const stepThresholds = [0, 15, 30, 45, 60, 75]; // Thresholds for each step (including first step at 0%)
 
     const processInterval = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -114,36 +119,24 @@ export default function UploadCSVDialog({
       setProgress(currentProgress);
       setProcessedFiles(Math.floor((currentProgress / 100) * totalFiles));
 
-      // Complete steps progressively
-      const stepThresholds = [15, 30, 45, 60, 75, 90];
-      if (
-        currentStep < processingSteps.length &&
-        currentProgress >= stepThresholds[currentStep]
-      ) {
-        setProcessingSteps((prev) =>
-          prev.map((step, index) =>
-            index === currentStep ? { ...step, completed: true } : step
-          )
-        );
-        currentStep++;
-      }
+      // Update steps based on current progress
+      setProcessingSteps((prevSteps) => {
+        return prevSteps.map((step, index) => ({
+          ...step,
+          completed: currentProgress >= stepThresholds[index],
+        }));
+      });
 
       if (currentProgress >= 100) {
         clearInterval(processInterval);
-        // Complete all remaining steps
-        setProcessingSteps((prev) =>
-          prev.map((step) => ({ ...step, completed: true }))
-        );
-
-        // Close dialog after completion
         setTimeout(() => {
           setIsProcessing(false);
           onClose();
-          // Reset state for next use
+          // Reset state
           setProgress(0);
           setProcessedFiles(0);
-          setProcessingSteps((prev) =>
-            prev.map((step) => ({ ...step, completed: false }))
+          setProcessingSteps((prevSteps) =>
+            prevSteps.map((step) => ({ ...step, completed: false }))
           );
         }, 2000);
       }
