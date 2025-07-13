@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./individual-search-questions.module.css";
@@ -33,7 +32,7 @@ export default function IndividualSearchQuestions({
   onBack,
 }: IndividualSearchQuestionsProps) {
   const [currentStep, setCurrentStep] = useState(1);
-  const [progress, setProgress] = useState(31);
+  const [progress, setProgress] = useState(0);
   const [formData, setFormData] = useState<FormData>({
     selectedReason: "",
     socialHandles: {
@@ -50,6 +49,15 @@ export default function IndividualSearchQuestions({
       emailAddress: "",
     },
   });
+
+  const [processingSteps, setProcessingSteps] = useState([
+    { id: "1", text: "Verifying Identity", completed: false },
+    { id: "2", text: "Cross-Matching Public Profiles", completed: false },
+    { id: "3", text: "Scanning Criminal & Legal Records", completed: false },
+    { id: "4", text: "Analyzing Professional Background", completed: false },
+    { id: "5", text: "Detecting Behavioral Risk Signals", completed: false },
+    { id: "6", text: "Generating Final Report", completed: false },
+  ]);
 
   const reasons = [
     "Pre-hire screening",
@@ -92,45 +100,49 @@ export default function IndividualSearchQuestions({
     },
   ];
 
-  const steps = [
-    { text: "Verifying Identity", completed: true },
-    { text: "Cross-Matching Public Profiles", completed: true },
-    { text: "Scanning Criminal & Legal Records", completed: false },
-    { text: "Analyzing Professional Background", completed: false },
-    { text: "Detecting Behavioral Risk Signals", completed: false },
-    { text: "Generating Final Report", completed: false },
-  ];
-
-  // Progress animation for step 4
   useEffect(() => {
     if (currentStep === 4) {
-      // Console log all collected data when reaching step 4
-      console.log("=== INDIVIDUAL SEARCH QUESTIONS - ALL COLLECTED DATA ===");
-      console.log("Search Query:", searchQuery);
-      console.log("Step 1 - Selected Reason:", formData.selectedReason);
-      console.log("Step 2 - Social Handles:", formData.socialHandles);
-      console.log("Step 3 - Personal Information:", formData.personalInfo);
-      console.log("=== COMPLETE FORM DATA ===", formData);
-      console.log("Current Step:", currentStep);
-      console.log("Progress:", progress);
+      // Reset state when starting analysis
+      setProgress(0);
+      setProcessingSteps((prev) =>
+        prev.map((step) => ({ ...step, completed: false }))
+      );
 
-      const timer = setInterval(() => {
-        setProgress((prev) => {
-          if (prev >= 95) {
-            clearInterval(timer);
-            // Call onComplete when analysis is finished
-            if (onComplete) {
-              onComplete(formData);
+      // Extended duration to 2 minutes (120000ms)
+      const duration = 120000;
+      const startTime = Date.now();
+      const stepThresholds = [0, 20, 40, 60, 80, 95]; // Progress thresholds
+
+      const processInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const currentProgress = Math.min((elapsed / duration) * 100, 100);
+        setProgress(currentProgress);
+
+        // Update steps based on current progress
+        setProcessingSteps((prevSteps) => {
+          const newSteps = [...prevSteps];
+          for (let i = 0; i < newSteps.length; i++) {
+            if (
+              !newSteps[i].completed &&
+              currentProgress >= stepThresholds[i]
+            ) {
+              newSteps[i].completed = true;
             }
-            return 95;
           }
-          return prev + 1;
+          return newSteps;
         });
-      }, 100);
 
-      return () => clearInterval(timer);
+        if (currentProgress >= 100) {
+          clearInterval(processInterval);
+          if (onComplete) {
+            onComplete(formData);
+          }
+        }
+      }, 200);
+
+      return () => clearInterval(processInterval);
     }
-  }, [currentStep, formData, searchQuery, onComplete]);
+  }, [currentStep, formData, onComplete]);
 
   const handleReasonSelect = (reason: string) => {
     setFormData((prev) => ({
@@ -345,31 +357,39 @@ export default function IndividualSearchQuestions({
 
       <p className={styles.description}>
         Aggregating public data across platforms and generating reports. This
-        may take up to 1 minute
+        may take up to 2 minutes
       </p>
 
       <div className={styles.progressSection}>
         <div className={styles.progressHeader}>
           <span className={styles.progressLabel}>Processing Files</span>
-          <span className={styles.progressCount}>{progress}/95</span>
+          <span className={styles.progressCount}>
+            {Math.round(progress)}/100
+          </span>
         </div>
         <div className={styles.progressBarContainer}>
           <div
             className={styles.progressBarFill}
-            style={{ width: `${(progress / 95) * 100}%` }}
+            style={{ width: `${progress}%` }}
           ></div>
         </div>
       </div>
 
       <div className={styles.stepsContainer}>
-        {steps.map((step, index) => (
-          <div key={index} className={styles.stepItem}>
-            <div
-              className={`${styles.stepIcon} ${
-                step.completed ? styles.completed : ""
-              }`}
-            >
-              {step.completed ? "✓" : ""}
+        {processingSteps.map((step) => (
+          <div key={step.id} className={styles.stepItem}>
+            <div className={styles.stepIndicator}>
+              {step.completed ? (
+                <Image
+                  src="/b2b/sidebar/checkmark.svg"
+                  alt="Completed"
+                  width={18}
+                  height={18}
+                  className={styles.stepIcon}
+                />
+              ) : (
+                <div className={styles.emptyCircle} />
+              )}
             </div>
             <span
               className={`${styles.stepText} ${
@@ -385,8 +405,9 @@ export default function IndividualSearchQuestions({
       <button
         className={styles.continueButton}
         onClick={() => console.log("Analysis Complete!")}
+        disabled={progress < 100}
       >
-        Continue
+        {progress < 100 ? "Processing..." : "Continue"}
       </button>
     </div>
   );
@@ -423,8 +444,6 @@ export default function IndividualSearchQuestions({
       </div>
 
       {renderCurrentStep()}
-
-      {/* Debug Info - Remove in production */}
     </div>
   );
 }
