@@ -23,7 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           rel="stylesheet"
         />
       </Head>
-      {/* <Header /> */}
+      <Header />
       <main>{children}</main>
     </div>
   );
