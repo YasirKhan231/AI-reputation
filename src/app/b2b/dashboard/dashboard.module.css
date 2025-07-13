@@ -282,29 +282,17 @@
 }
 
 .pieChart circle {
-  stroke-linecap: round;
+  stroke-width: 10;
 }
-
-.pieChart circle:nth-child(2) {
-  stroke-dasharray: calc(235.5 * 0.9) calc(502 * 0.1);
-}
-
-.pieChart circle:nth-child(3) {
-  stroke-dasharray: calc(141.3 * 0.9) calc(502 * 0.1);
-  stroke-dashoffset: calc(-235.5 * 0.9 - 502 * 0.1);
-}
-
-.pieChart circle:nth-child(4) {
-  stroke-dasharray: calc(84.78 * 0.9) calc(502 * 0.1);
-  stroke-dashoffset: calc(-(235.5 + 141.3) * 0.9 - 502 * 0.2);
-}
-
 .pieChartCenter {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+.pieChart circle {
+  transition: stroke-dasharray 0.5s ease, stroke-dashoffset 0.5s ease;
 }
 
 .pieChartTotal {

@@ -49,6 +49,31 @@ const barChartData = [
   { month: "APR", low: 55, moderate: 30, high: 75 },
 ];
 
+// Pie chart data with percentages
+const pieChartData = [
+  {
+    type: "low",
+    label: "LOW RISK",
+    value: 3650,
+    percentage: 52,
+    color: "#37BD80",
+  },
+  {
+    type: "moderate",
+    label: "MODERATE RISK",
+    value: 2520,
+    percentage: 30,
+    color: "#E5C02A",
+  },
+  {
+    type: "high",
+    label: "HIGH RISK",
+    value: 521,
+    percentage: 18,
+    color: "#E2723E",
+  },
+];
+
 export default function Dashboard() {
   const [selectedRisk, setSelectedRisk] = useState<string | null>(null);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -85,6 +110,39 @@ export default function Dashboard() {
   const handleBarLeave = () => {
     setHoveredBar(null);
   };
+
+  // Pie chart calculations
+  const radius = 80;
+  const strokeWidth = 40;
+  const circumference = 2 * Math.PI * radius;
+  const gapAngle = 2; // degrees between segments
+  const gapLength = (gapAngle / 360) * circumference;
+
+  let currentOffset = 0;
+  const pieSegments = pieChartData.map((item) => {
+    const segmentLength = (item.percentage / 100) * circumference;
+    const dashLength = segmentLength - gapLength;
+    const dashArray = `${dashLength} ${circumference - dashLength}`;
+    const offset = -currentOffset;
+
+    currentOffset += segmentLength;
+
+    return (
+      <circle
+        key={item.type}
+        cx="100"
+        cy="100"
+        r={radius}
+        fill="none"
+        stroke={item.color}
+        strokeWidth={strokeWidth}
+        strokeDasharray={dashArray}
+        strokeDashoffset={offset}
+      />
+    );
+  });
+
+  const totalProfiles = pieChartData.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className={styles.dashboardContainer}>
@@ -171,90 +229,43 @@ export default function Dashboard() {
                   <circle
                     cx="100"
                     cy="100"
-                    r="80"
+                    r={radius}
                     fill="none"
                     stroke="#F3F4F6"
-                    strokeWidth="40"
+                    strokeWidth={strokeWidth}
                   />
-                  {/* Low Risk */}
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#37BD80"
-                    strokeWidth="40"
-                    strokeDasharray="235.5 502"
-                    strokeDashoffset="0"
-                  />
-                  {/* Moderate Risk */}
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#E5C02A"
-                    strokeWidth="40"
-                    strokeDasharray="141.3 502"
-                    strokeDashoffset="-235.5"
-                  />
-                  {/* High Risk */}
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="80"
-                    fill="none"
-                    stroke="#E2723E"
-                    strokeWidth="40"
-                    strokeDasharray="84.78 502"
-                    strokeDashoffset="-376.8"
-                  />
+                  {/* Segments */}
+                  {pieSegments}
                 </svg>
                 <div className={styles.pieChartCenter}>
-                  <div className={styles.pieChartTotal}>6,890</div>
+                  <div className={styles.pieChartTotal}>
+                    {totalProfiles.toLocaleString()}
+                  </div>
                   <div className={styles.pieChartLabel}>TOTAL</div>
                 </div>
               </div>
               <div className={styles.pieChartLegend}>
-                <div
-                  className={`${styles.legendItem} ${
-                    selectedRisk === "low" ? styles.selected : ""
-                  }`}
-                  onClick={() => handleRiskClick("low")}
-                >
+                {pieChartData.map((item) => (
                   <div
-                    className={`${styles.legendColor} ${styles.lowRisk}`}
-                  ></div>
-                  <span className={styles.legendLabel}>LOW RISK</span>
-                  <span className={styles.legendValue}>3,650</span>
-                  <span className={styles.legendPercentage}>52%</span>
-                </div>
-                <div
-                  className={`${styles.legendItem} ${
-                    selectedRisk === "moderate" ? styles.selected : ""
-                  }`}
-                  onClick={() => handleRiskClick("moderate")}
-                >
-                  <div
-                    className={`${styles.legendColor} ${styles.moderateRisk}`}
-                  ></div>
-                  <span className={styles.legendLabel}>MODERATE RISK</span>
-                  <span className={styles.legendValue}>2,520</span>
-                  <span className={styles.legendPercentage}>30%</span>
-                </div>
-                <div
-                  className={`${styles.legendItem} ${
-                    selectedRisk === "high" ? styles.selected : ""
-                  }`}
-                  onClick={() => handleRiskClick("high")}
-                >
-                  <div
-                    className={`${styles.legendColor} ${styles.highRisk}`}
-                  ></div>
-                  <span className={styles.legendLabel}>HIGH RISK</span>
-                  <span className={styles.legendValue}>521</span>
-                  <span className={styles.legendPercentage}>18%</span>
-                </div>
+                    key={item.type}
+                    className={`${styles.legendItem} ${
+                      selectedRisk === item.type ? styles.selected : ""
+                    }`}
+                    onClick={() => handleRiskClick(item.type)}
+                  >
+                    <div
+                      className={styles.legendColor}
+                      style={{ backgroundColor: item.color }}
+                    ></div>
+                    <span className={styles.legendLabel}>{item.label}</span>
+                    <span className={styles.legendValue}>
+                      {item.value.toLocaleString()}
+                    </span>
+                    <span className={styles.legendPercentage}>
+                      {item.percentage}%
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
