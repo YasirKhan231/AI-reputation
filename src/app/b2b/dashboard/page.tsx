@@ -227,7 +227,7 @@ export default function Dashboard() {
                   ></div>
                   <span className={styles.legendLabel}>LOW RISK</span>
                   <span className={styles.legendValue}>3,650</span>
-                  <span className={styles.legendPercentage}>(52%)</span>
+                  <span className={styles.legendPercentage}>52%</span>
                 </div>
                 <div
                   className={`${styles.legendItem} ${
@@ -240,7 +240,7 @@ export default function Dashboard() {
                   ></div>
                   <span className={styles.legendLabel}>MODERATE RISK</span>
                   <span className={styles.legendValue}>2,520</span>
-                  <span className={styles.legendPercentage}>(30%)</span>
+                  <span className={styles.legendPercentage}>30%</span>
                 </div>
                 <div
                   className={`${styles.legendItem} ${
@@ -253,7 +253,7 @@ export default function Dashboard() {
                   ></div>
                   <span className={styles.legendLabel}>HIGH RISK</span>
                   <span className={styles.legendValue}>521</span>
-                  <span className={styles.legendPercentage}>(18%)</span>
+                  <span className={styles.legendPercentage}>18%</span>
                 </div>
               </div>
             </div>

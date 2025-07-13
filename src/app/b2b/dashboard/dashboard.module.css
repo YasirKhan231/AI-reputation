@@ -39,7 +39,7 @@
 .metricsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 32px;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .metricValue {
-  font-size: 50px;
+  font-size: 44px;
   font-weight: 700;
   color: #1f2937;
   line-height: 1;
@@ -155,7 +155,7 @@
 }
 
 .uploadButton {
-  padding: 12px 24px;
+  padding: 12px 32px;
   background: #1c3ae3;
   color: white;
   border: none;
@@ -362,9 +362,9 @@
 }
 
 .legendLabel {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: #1f2937;
+  color: #5A636D;
   flex: 1;
   text-align: left;
 }
@@ -372,13 +372,14 @@
 .legendValue {
   font-size: 16px;
   font-weight: 600;
-  color: #1f2937;
+  color: #002F6C;
   margin-right: 8px;
 }
 
 .legendPercentage {
   font-size: 14px;
-  color: #6b7280;
+  color: #002F6C;
+  background-color:#E5EFF8;
 }
 
 .barChartWrapper {
