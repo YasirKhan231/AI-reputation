@@ -6,7 +6,9 @@ import { useState } from "react";
 import styles from "./newprofile.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts"; // Import recharts components
 import { profileData } from "@/data/profiledata";
-
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Sidebar from "@/components/sidebar";
 // Helper function to determine risk level and class
 const getRiskLevel = (score: number) => {
   if (score < 30)
@@ -201,6 +203,71 @@ const AssessmentCard = ({
     </div>
   );
 };
+const ShareDialog = ({
+  onClose,
+  position,
+}: {
+  onClose: () => void;
+  position: { top: number; left: number };
+}) => {
+  const [isCopied, setIsCopied] = useState(false);
+  const linkText = "https://www.obsrvr.com/search/pins/?qdsfsdfsdfsdf";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(linkText);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  return (
+    <div className={styles.shareDialogOverlay} onClick={onClose}>
+      <div
+        className={styles.shareDialogContainer}
+        style={{
+          top: `${position.top}px`,
+          left: `${position.left}px`,
+        }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.shareDialogHeader}>
+          <h3 className={styles.shareDialogTitle}>Share Link</h3>
+        </div>
+
+        <div className={styles.linkContainer}>
+          <div className={styles.linkIconContainer}>
+            <img
+              src="/profile/link.svg"
+              alt="Link"
+              className={styles.linkIcon}
+            />
+          </div>
+
+          <div className={styles.divider}></div>
+
+          <div className={styles.linkTextContainer}>
+            <p className={styles.linkText}>{linkText}</p>
+          </div>
+
+          <div className={styles.divider}></div>
+
+          <button className={styles.copyButton} onClick={handleCopy}>
+            <img
+              src="/profile/copy.svg"
+              alt="Copy"
+              className={styles.copyIcon}
+            />
+            {isCopied && <span className={styles.copiedText}>Copied!</span>}
+          </button>
+        </div>
+
+        <p className={styles.shareDescriptionText}>
+          Copy this link and send it to anyone you want to share the report
+          with.
+        </p>
+      </div>
+    </div>
+  );
+};
 
 // Info Dialog Component
 const InfoDialog = ({
@@ -275,7 +342,14 @@ const InfoDialog = ({
 };
 
 export default function ProfilePage() {
+  const [showShareDialog, setShowShareDialog] = useState(false);
+  const [shareDialogPosition, setShareDialogPosition] = useState({
+    top: 0,
+    left: 0,
+  });
   const [activeDialog, setActiveDialog] = useState<string | null>(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   const [dialogPosition, setDialogPosition] = useState<
     { top: number; left: number } | undefined
   >(undefined);
@@ -291,7 +365,7 @@ export default function ProfilePage() {
     analyticSummary,
     assessmentDescriptions,
   } = profileData;
-
+  const router = useRouter();
   const assessmentOrder = [
     {
       key: "professionalLife",
@@ -324,7 +398,18 @@ export default function ProfilePage() {
       data: scores.personalAuthenticity,
     },
   ];
+  const toggleSidebar = () => {
+    setSidebarCollapsed(!sidebarCollapsed);
+  };
 
+  const handleShareClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const buttonRect = e.currentTarget.getBoundingClientRect();
+    setShareDialogPosition({
+      top: buttonRect.bottom + 10,
+      left: buttonRect.left - 150,
+    });
+    setShowShareDialog(true);
+  };
   const handleInfoClick = (
     key: string,
     event: React.MouseEvent<HTMLImageElement>
@@ -369,17 +454,28 @@ export default function ProfilePage() {
 
   return (
     <div className={styles.container}>
+      {/* <Sidebar isCollapsed={sidebarCollapsed} onToggle={toggleSidebar} /> */}
       {/* Navigation */}
       <nav className={styles.navigation}>
         <div className={styles.breadcrumbs}>
-          <span style={{ color: "#4880FF" }}>REPORTS</span>
+          <Link
+            href="/b2b/report"
+            className={styles.breadcrumbLink}
+            style={{ color: "#4880FF" }}
+          >
+            REPORTS
+          </Link>
           <img
             src="/profile/right.svg"
             alt="chevron right"
             width={16}
             height={16}
           />
-          <span style={{ color: "#4880FF" }}>
+          <span
+            onClick={() => router.back()}
+            className={styles.breadcrumbLink}
+            style={{ color: "#4880FF" }}
+          >
             UI UX DESIGNER HIRING 2025 Q1
           </span>
           <img
@@ -403,11 +499,11 @@ export default function ProfilePage() {
               Download PDF
             </button>
           )}
-          <div className={styles.sharebutton}>
+          <div className={styles.sharebutton} onClick={handleShareClick}>
             <img
               src="/profile/share.svg"
-              alt="download icon"
-              className={styles.downloadIcon}
+              alt="share icon"
+              className={styles.shareIcon}
             />
           </div>
         </div>
@@ -549,6 +645,12 @@ export default function ProfilePage() {
               ]
             }
             position={dialogPosition}
+          />
+        )}
+        {showShareDialog && (
+          <ShareDialog
+            onClose={() => setShowShareDialog(false)}
+            position={shareDialogPosition}
           />
         )}
 
