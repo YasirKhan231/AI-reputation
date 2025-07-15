@@ -1,0 +1,843 @@
+.container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.navigation {
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:0px auto;
+
+  width:1297px;
+}
+.navigationname {
+  font-weight:400;
+  size:16px;
+  line-height:16px;
+  color:#777777;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 19px;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.downloadIcon {
+  width: 18px;
+  height: 16px;
+}
+
+.mainContainer {
+  width: 1297px;
+  min-height: 1857px;
+  margin: 0 auto;
+  border: 1px solid #e5e5e5;
+  border-radius: 20px;
+  padding: 40px;
+  background: white;
+}
+
+.profileHeader {
+  width: 1200px;
+  height: 210px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.profileLeft {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.profileImageContainer {
+  width: 130px;
+  height: 130px;
+}
+
+.profileImage {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileInfo {
+  width: 384px;
+  height: 126px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profileName {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 22px;
+  color: #212636;
+  margin: 0;
+}
+
+.profileRole,
+.profileEmail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  width: 420px;
+  font-size: 16px;
+  color: #888888;
+}
+
+.roleIcon,
+.emailIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px; /* Adjusted margin for better spacing */
+}
+
+.tag {
+  background: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-family: "Geist", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.profileRight {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.riskBadge {
+  width: 94px;
+  height: 36px;
+  border-radius: 40px;
+  padding: 9px 12px;
+  background: #effff4;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Satoshi", sans-serif;
+  font-size: 13px;
+  color: #37bd80;
+}
+
+.riskCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #37bd80;
+}
+
+.overallScore {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 5px;
+  border-radius : 15px;
+  margin: 2px;
+  color: #FF981B;
+  background-color:#FFF9F2;
+}
+
+.scoreIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 8px;
+}
+
+.socialIcon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.assessmentGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.metricCard {
+  width: 608px;
+  height: 128px;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #eeeeee;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.cardTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #212636;
+}
+
+.scoreText {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: right;
+  margin-left: auto; /* Pushes score text to the right */
+  padding-right: 24px; /* Space for info icon */
+}
+
+.infoIcon {
+  width: 16px;
+  margin-left:5px;
+  height: 17px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.infoIcon:hover {
+  color: #007bff;
+}
+
+.progressBarContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.progressBar {
+  width: 568px;
+  height: 10px;
+  border-radius: 20px;
+  background: #eeeeee;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.viewDetailsBtn {
+  width: 568px;
+  height: 36px;
+  padding: 13px 14px;
+  border-radius: 6px;
+  border: 1px solid #eeeeee;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+  cursor: pointer;
+}
+
+.viewDetailsBtn:hover {
+  background-color: #f9f9f9;
+}
+
+.viewDetailsIcon {
+  width: 18px;
+  height: 18px;
+  color: #555555;
+}
+
+.dialogOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialogContainer {
+  width: 374px;
+  height: 163px; /* Rounded from 162.558px */
+  border-radius: 10px; /* Changed from 8px */
+  background: #ffffff; /* Changed from #D9D9D9 to #FFFFFF */
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialogHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Gap between risk label and title */
+}
+
+.dialogTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #212636;
+  line-height: 14px; /* Added line-height */
+}
+
+.dialogRiskLabel {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500; /* Changed from 700 */
+  font-size: 13px; /* Changed from 12px */
+  line-height: 13px; /* Added line-height */
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.closeIcon {
+  width: 16px;
+  height: 16px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.closeIcon:hover {
+  color: #000;
+}
+
+.dialogDescription {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #555555; /* Changed from #555555 */
+  margin: 0;
+  flex: 1;
+}
+
+.bottomSection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.discAssessment {
+  width: 609px;
+  height: 480px; /* Adjusted height based on new content */
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column; /* Main container is column */
+  gap: 20px; /* Gap between title, chart/legend, and descriptors */
+}
+
+.sectionTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  margin: 0; /* Remove margin-bottom as gap handles spacing */
+  margin-bottom: 12px;
+  color: #212636;
+}
+
+.discChartContainer {
+  display: flex;
+  gap: 67px;
+  align-items: center;
+  flex: 1;
+}
+
+.pieChartWrapper {
+  width: 160px; /* Increased from 120px to give more space */
+  height: 160px; /* Increased from 120px to give more space */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Gap between legend items */
+  flex-grow: 1; /* Allows legend to take available space */
+}
+
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+  border-radius:5px;
+  padding:7px;
+  border: 1px solid #EEEEEE ;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.percentage {
+  margin-left: auto;
+  font-weight: 700; /* Value can be 700 */
+  color: #212636; /* Darker color for percentage */
+}
+
+.discDescriptors {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Gap between descriptor cards */
+}
+
+.discDescriptorCard {
+  background: #f8f9fa; /* Light grey background */
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px; /* Gap between label and value/text inside card */
+}
+
+.descriptorLabel {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #5A636D;
+}
+
+.descriptorValue {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500; /* Match strength value is bold */
+  font-size: 14px;
+  color: #5A636D; /* Darker color for values */
+}
+
+.descriptorText {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #555555;
+  line-height: 20px; /* Adjusted line height for readability */
+}
+
+.flaggedContents {
+  width: 609px;
+  height: 481px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+  padding: 20px; /* Internal padding for the container */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Gap between title and first item, and between items */
+}
+
+.flaggedItem {
+  width: 100%; /* Will be 569px due to parent padding */
+  height: 114px;
+  border-radius: 6px;
+  background: #fffbfb;
+  border: 1px solid #f8f4f4;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes content vertically */
+}
+
+.flaggedItem p {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px; /* Changed from 14px */
+  line-height: 24px; /* Changed from 18px */
+  margin: 0; /* Remove margin-bottom as flex parent handles spacing */
+  color: #4b2525; /* Changed from #000 */
+}
+
+.flaggedMeta {
+  display: flex;
+  margin-top:8px;
+  justify-content: space-between; /* Puts tags on left, date/source on right */
+  align-items: center;
+  width: 100%; /* Ensure it takes full width */
+}
+
+.flaggedTagsContainer {
+  display: flex;
+  gap: 10px; /* Gap between individual tags */
+  flex-wrap: wrap; /* Allow tags to wrap if too many */
+}
+
+.flaggedTag {
+  background: #f7ecec;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight:500;
+  color: #b83535;
+  padding: 4px 10px; /* Adjusted padding to control height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap; /* Prevent tags from breaking lines internally */
+}
+
+.flaggedDateSource {
+  display: flex;
+  gap: 8px; /* Gap between date and source */
+  align-items: center;
+}
+
+.flaggedDate {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px; /* Changed from 12px */
+  color: #888888; /* Changed from #666 */
+}
+.flaggedSourcespan {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #888888;
+}
+.flaggedSourceLink {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #3b82f6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.moreFlaggedContentBtn {
+  width: 100%; /* 569px due to parent padding */
+  height: 45px;
+  border-radius: 4px;
+  border: 1px solid #eeeeee;
+  background: #ffffff;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14px;
+  color: #555555;
+  cursor: pointer;
+  margin-top: auto; /* Pushes the button to the bottom */
+}
+
+.additionalSections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.positiveMinds,
+.educationProfession {
+  width: 609px;
+  min-height: 391px; /* Use min-height to prevent content overflow */
+  border: 1px solid #eeeeee;
+  border-radius: 8px;
+  padding: 20px;
+  background: white;
+  display: flex; /* Added for flex column layout */
+  flex-direction: column; /* Added for flex column layout */
+}
+
+/* New styles for the container holding the items within Positive Minds/Education */
+.positiveItemsContainer,
+.educationItemsContainer {
+  width: 569px; /* Specified width */
+  min-height: 316px; /* Use min-height for content flexibility */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Gap between individual items */
+}
+
+.mindItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px; /* Added horizontal padding */
+  background: #f5fbfa; /* New background color */
+  border-radius: 6px; /* Added border-radius */
+  border-bottom: none; /* Removed individual item border-bottom */
+}
+
+.mindContent {
+  display: flex;
+  flex-direction: column; /* Stack title and description */
+}
+
+.mindItem:last-child {
+  border-bottom: none;
+}
+
+.mindType {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  margin-bottom:8px;
+  font-size: 16px; /* Changed from 14px */
+  line-height: 16px; /* Added line-height */
+  color: #08493f; /* New color */
+}
+
+.mindDesc {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500; /* Lighter font weight */
+  font-size: 14px;
+  line-height: 14px; /* Changed from 16px */
+  color: #6e7e7c; /* Lighter color */
+}
+
+.eduItem {
+  display: flex;
+  align-items: center; /* Vertically center content */
+  gap: 12px;
+  padding: 16px; /* Added padding */
+  background: #f5fbfa; /* New background color */
+  border-radius: 6px; /* Added border-radius */
+  border-bottom: none; /* Removed individual item border-bottom */
+}
+
+.eduItem:last-child {
+  border-bottom: none;
+}
+
+.eduContent {
+  display: flex;
+  flex-direction: row; /* Place title and timeline on same line */
+  justify-content: space-between; /* Push timeline to the right */
+  align-items: center; /* Vertically center title and timeline */
+  flex-grow: 1; /* Allow content to take available space */
+}
+.eduIcon{
+  color:#002F6C;
+}
+.eduRole {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: #002F6C; /* New color, matching mindType */
+}
+
+.eduTimeline {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: #555555;
+}
+
+.analyticInsights {
+  width: 1238px;
+  height: 221px;
+  border-radius: 10px;
+  border: 1px solid #eeeeee;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 40px auto 0;
+}
+
+.analyticsTitle {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #212636;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #eeeeee;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.insightsGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.analyticsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 16px;
+  padding-bottom: 16px; /* Space above the line */
+  border-bottom: 1px solid #eeeeee; /* The line itself */
+  margin-bottom: 16px; /* Space below the line */
+}
+
+.analyticsRow:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.label {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+}
+
+.value {
+  font-family: "Satoshi", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #555555;
+  text-align: right;
+}
+.pieChartContainer {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.pieChart {
+  width: 100%;
+  height: 100%;
+}
+
+.pieSegment {
+  transition: all 0.3s ease;
+}
+
+.pieSegment:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+.pieChartContainer {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pieChart {
+  width: 100%;
+  height: 100%;
+}
+
+.pieSegment {
+  transition: all 0.3s ease;
+}
+
+.pieSegment:hover {
+  opacity: 0.9;
+  filter: brightness(1.05);
+}
+.pieChartContainer {
+  position: relative;
+  width: 1000px; /* Container should be large enough to contain all segments */
+  height: 1000px;
+}
+
+.pieChartBackground {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pieSegment {
+  position: absolute;
+  transform-origin: center center;
+}
+.sharebutton {
+   width:41px;
+   height:40px;
+   border-radius :50%;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   background-color:#F5F5F5;
+}
+.navigationActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
