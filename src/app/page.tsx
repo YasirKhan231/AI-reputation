@@ -14,11 +14,11 @@ export default function HomePage() {
       <div className={styles.buttonGroup}>
         <button
           className={styles.button}
-          onClick={() => router.push("/b2c7dashboard")}
+          onClick={() => router.push("b2c/questions")}
         >
           Individual
         </button>
-        <button className={styles.button} onClick={() => router.push("/b2b")}>
+        <button className={styles.button} onClick={() => router.push("b2b/dashboard")}>
           Business
         </button>
       </div>
